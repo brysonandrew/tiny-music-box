@@ -103,3 +103,9 @@ declare function registerProcessor(
     parameterDescriptors?: AudioParamDescriptor[];
   }
 ): void;
+
+declare module '~react-pages' {
+  import type { RouteObject } from 'react-router'
+  const routes: RouteObject[]
+  export default routes
+}

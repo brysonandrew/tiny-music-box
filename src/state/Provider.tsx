@@ -33,11 +33,13 @@ export const Provider: FC<
       _STATE_STORAGE_KEY,
       INIT_STATE
     );
+
   const [state, dispatch] = useReducer<
     TReducer,
     TState
   >(
     (...args) => {
+      console.log(args);
       const nextState = reducer(
         ...args
       );
@@ -45,7 +47,7 @@ export const Provider: FC<
         ...nextState,
         active: {},
         loading: {},
-        ready: false,
+        ready: true,
       });
       return nextState;
     },
@@ -56,6 +58,7 @@ export const Provider: FC<
         savedState
       )
   );
+
   const readyRef = useRef(() =>
     dispatch({
       type: "ready",
@@ -65,9 +68,11 @@ export const Provider: FC<
       ),
     })
   );
+
   useEffect(() => {
     readyRef.current();
   }, []);
+
   return (
     <Context.Provider
       value={{

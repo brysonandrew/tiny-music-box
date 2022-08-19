@@ -1,16 +1,18 @@
 import ReactDOM from "react-dom/client";
 import ErrorBoundary from "./templates/ErrorBoundary";
-import { App } from "./app";
+import { Layout } from "./layout";
 import { BrowserRouter as Router } from "react-router-dom";
-import "./css/fonts.css";
-import "./css/reset.css";
+import "./styles/fonts.css";
+import "./styles/reset.css";
+import { Provider } from "./state/Provider";
 
-const root = document.getElementById("root");
+const root =
+  document.getElementById("root");
 if (root)
   ReactDOM.createRoot(root).render(
     <ErrorBoundary>
-    <Router>
-      <App />
-    </Router>
-  </ErrorBoundary>
+      <Router>
+        <Layout />
+      </Router>
+    </ErrorBoundary>
   );

@@ -28,6 +28,7 @@
     "@react-three/postprocessing": "^2.3.2",
     "framer-motion": "^7.2.0",
     "framer-motion-3d": "^7.2.0",
+    "leva": "^0.9.30",
     "midi-json-parser": "^8.1.7",
     "phenomenon": "^1.6.0",
     "react": "^18.2.0",

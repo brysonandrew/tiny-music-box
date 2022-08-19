@@ -6,24 +6,33 @@ body {
   color: #fff;
   box-sizing: border-box;
   text-align: left;
-  font-family: "Nanum Gothic", -apple-system, BlinkMacSystemFont,
-    Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
-    Helvetica Neue, sans-serif;
+  font-family: "Vampire King",
+    "Flesh and Blood", -apple-system,
+    BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans,
+    Droid Sans, Helvetica Neue,
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 .--title {
-  font-family: "Exan Regular", monospace;
+  font-family: "Vampire King",
+    -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Oxygen, Ubuntu,
+    Cantarell, Fira Sans, Droid Sans,
+    Helvetica Neue, sans-serif;
 }
 
 .--value {
   /* font-family: "VT323", monospace; */
-  font-family: "Share Tech Mono", monospace;
+  font-family: "Share Tech Mono",
+    monospace;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  font-family: source-code-pro, Menlo,
+    Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -33,9 +42,12 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Exan Regular", "fleshandblood", -apple-system,
-    BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
-    Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "Exan Regular",
+    "fleshandblood", -apple-system,
+    BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans,
+    Droid Sans, Helvetica Neue,
+    sans-serif;
 }
 
 html,

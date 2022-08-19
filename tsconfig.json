@@ -16,14 +16,19 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "typeRoots": ["node_modules/@types", "@types/audioworklet"],
+    "typeRoots": [
+      "node_modules/@types",
+      "@types/audioworklet",
+    ]
   },
   "include": [
     "src/**/*.js",
     "src/**/*.jsx",
     "src/**/*.ts",
     "src/**/*.tsx",
-    "src/**/*.glsl"
-   ],
-  "references": [{ "path": "./tsconfig.node.json" }]
+    "src/**/*.glsl",
+  ],
+  "references": [
+    { "path": "./tsconfig.node.json" }
+  ]
 }

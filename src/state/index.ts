@@ -3,6 +3,7 @@ import type {
   TState,
   TReducerAction,
 } from "./types";
+
 export const resolveHydrationState = (
   state: TState,
   savedState?: TState
@@ -30,6 +31,7 @@ export const resolvePostHydrationState =
       ...state,
       ...appState,
       context: INIT_STATE.context,
+      ready: true,
     };
   };
 
@@ -37,6 +39,8 @@ export const reducer = (
   state: TState,
   { type, value }: TReducerAction
 ) => {
+  console.log(state);
+  console.log(type, value);
   switch (type) {
     case "state": {
       return { ...state, ...value };
@@ -48,6 +52,7 @@ export const reducer = (
       };
     }
     case "active": {
+      console.log("active");
       return {
         ...state,
         active: value,
@@ -55,7 +60,6 @@ export const reducer = (
       };
     }
     case "ready": {
-      console.log("ready");
       return {
         ...state,
         ...value,
