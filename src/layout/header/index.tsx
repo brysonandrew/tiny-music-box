@@ -24,9 +24,11 @@ import {
   GLASS_PURPLE_BORDER,
   GLASS_PURPLE_DARK,
   GLASS_WHITE,
+  HEADER_HEIGHT,
 } from "../../styles/constants";
 import { GLASS_CSS } from "../../styles/glass";
 import { centerSelfCss } from "../../styles/position";
+import { useOutsideClick } from "../../utils/useOutsideClick";
 
 const Root = styled.header`
   ${GLASS_CSS}
@@ -54,6 +56,7 @@ const Root = styled.header`
   top: 0;
   left: 0;
   width: 100%;
+  height: ${HEADER_HEIGHT}px;
   padding: ${GAP}px ${GAP * 1.75}px;
   z-index: 1;
 `;
@@ -62,7 +65,7 @@ const Title = styled.h1`
   ${textLgCss};
 `;
 
-const Row = styled.div`
+const Row = styled(motion.div)`
   ${rowGap}
 `;
 
@@ -103,9 +106,17 @@ const Text = styled(motion.span)`
 export const Header = () => {
   const { menu, active, dispatch } =
     useContext();
+
   return (
     <Root>
-      <Row>
+      <Row
+        onTap={() =>
+          dispatch({
+            type: "menu",
+            value: null,
+          })
+        }
+      >
         <Title className="--title">
           {nameToTitle(
             packageJson.name

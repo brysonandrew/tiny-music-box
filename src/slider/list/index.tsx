@@ -7,9 +7,13 @@ import { rowGap } from "../../styles/decorators";
 import { textMdCss } from "../../styles/text";
 import type { TRequireAtLeastOne } from "../../types";
 import { Slider as SliderDark } from "..";
+import { HEADER_HEIGHT } from "../../styles/constants";
 
 const Root = styled(motion.ul)`
   width: 100%;
+  height: calc(
+    100vh - ${HEADER_HEIGHT}px
+  );
 `;
 
 const Item = styled(motion.li)`

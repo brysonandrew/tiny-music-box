@@ -32,3 +32,5 @@ export const GLASS_GREEN =
   "rgba(28,183,90, 0.1)";
 export const GLASS_BLUE =
   "rgba(28, 89, 183, 0.1)";
+
+export const HEADER_HEIGHT = 89;

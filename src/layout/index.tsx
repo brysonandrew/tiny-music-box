@@ -19,6 +19,7 @@ import {
   GLASS_BLUE,
   GLASS_RED,
   GLASS_WHITE,
+  HEADER_HEIGHT,
 } from "../styles/constants";
 import {
   columnEnd,
@@ -54,8 +55,8 @@ const Fixed = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+  height: ${HEADER_HEIGHT}px;
   width: 100%;
-  height: 100vh;
 `;
 
 const Side = styled(motion.div)`
@@ -72,28 +73,17 @@ const Side = styled(motion.div)`
     );
   width: ${SIDE_WIDTH}px;
   padding: ${GAP}px;
-  height: 100%;
   flex-grow: 1;
 `;
 
 export const Layout = () => {
-  const [isAnimating, setAnimating] =
-    useState<boolean>(false);
-  const { menu } = useContext();
+  const { menu, dispatch } =
+    useContext();
   const location = useLocation();
   const pages = useRoutes(
     pageRoutes,
     location
   );
-
-  const handleLayoutAnimationComplete =
-    () => {
-      setAnimating(false);
-    };
-  const handleLayoutAnimationStart =
-    () => {
-      setAnimating(true);
-    };
 
   const isSide = Boolean(menu);
 
@@ -104,21 +94,18 @@ export const Layout = () => {
       <MotionConfig
         transition={{
           ease: "easeInOut",
-          duration: 2,
+          duration: 0.4,
         }}
       >
         <Main
+          onTap={() =>
+            dispatch({
+              type: "menu",
+              value: null,
+            })
+          }
           layout
-          onLayoutAnimationStart={
-            handleLayoutAnimationStart
-          }
-          onLayoutAnimationComplete={
-            handleLayoutAnimationComplete
-          }
           style={{
-            // width: `calc(100% - ${
-            //   isSide ? SIDE_WIDTH : 0
-            // }px)`,
             left: isSide
               ? -SIDE_WIDTH
               : 0,
