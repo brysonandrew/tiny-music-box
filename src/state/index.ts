@@ -59,6 +59,13 @@ export const reducer = (
         loading: {},
       };
     }
+    case "menu": {
+      console.log(value);
+      return {
+        ...state,
+        menu: value,
+      };
+    }
     case "ready": {
       return {
         ...state,

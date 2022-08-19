@@ -4,7 +4,7 @@ import type {
   ReducerState,
   ReducerAction,
 } from "react";
-import { MENU_KEYS } from "../layout/header/config";
+import type { TMenuKey } from "../layout/header/config";
 import type { INIT_STATE } from "./constants";
 import type { TSoundConfig } from "./constants/sound";
 import type { TStyleConfig } from "./constants/style";
@@ -15,8 +15,9 @@ export type TContext = TState & {
 
 export type TState = {
   context: AudioContext;
+  menu: TMenuKey | null;
   active: Partial<
-    Record<TActiveKey, boolean | any>
+    Record<TActiveKey, boolean>
   >;
   sound: TSoundConfig;
   style: TStyleConfig;
@@ -64,7 +65,7 @@ export type TLoadableKey =
   typeof LOADABLE[number];
 
 export const ACTIVE = [
-  ...MENU_KEYS,
+  "Menu",
   "None",
 ] as const;
 export type TActiveKey =

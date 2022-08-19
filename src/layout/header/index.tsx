@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import styled from "@emotion/styled";
 import {
   columnEnd,
+  rowCenter,
   rowGap,
 } from "../../styles/decorators";
 import packageJson from "../../../package.json";
@@ -13,16 +14,47 @@ import {
   textLgCss,
   textMdCss,
 } from "../../styles/text";
-import { GAP } from "../../styles/constants";
-import { RECORD } from "./menu";
+import {
+  GAP,
+  GAP_025,
+  GAP_05,
+  GLASS_BLUE,
+  GLASS_BORDER,
+  GLASS_PURPLE,
+  GLASS_PURPLE_BORDER,
+  GLASS_PURPLE_DARK,
+  GLASS_WHITE,
+} from "../../styles/constants";
+import { GLASS_CSS } from "../../styles/glass";
+import { centerSelfCss } from "../../styles/position";
 
 const Root = styled.header`
+  ${GLASS_CSS}
   ${rowGap}
+  /* border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px; */
+  background-image: radial-gradient(
+      ellipse at top,
+      ${GLASS_PURPLE},
+      transparent
+    ),
+    radial-gradient(
+      ellipse at bottom,
+      ${GLASS_WHITE},
+      transparent
+    );
+  /* background-color: rgba(
+    255,
+    255,
+    255,
+    0.2
+  ); */
+  border-bottom: ${GLASS_PURPLE_BORDER};
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  padding: ${GAP}px;
+  padding: ${GAP}px ${GAP * 1.75}px;
   z-index: 1;
 `;
 
@@ -39,15 +71,29 @@ const RowList = styled.ul`
 `;
 
 const Item = styled(motion.li)`
-  ${columnEnd}
+  ${rowCenter}
+  position: relative;
   margin-right: ${GAP}px;
   &:last-child {
     margin-right: 0;
   }
 `;
 
+const Selected = styled(motion.div)`
+  ${GLASS_CSS}
+  background-color: ${GLASS_PURPLE_DARK};
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+`;
+
 const Button = styled(motion.button)`
   ${rowGap}
+  position: relative;
+  padding: ${GAP_025}px ${GAP_05}px;
+  z-index: 1;
 `;
 
 const Text = styled(motion.span)`
@@ -55,9 +101,8 @@ const Text = styled(motion.span)`
 `;
 
 export const Header = () => {
-  const { active, dispatch } =
+  const { menu, active, dispatch } =
     useContext();
-  console.log(active);
   return (
     <Root>
       <Row>
@@ -69,32 +114,46 @@ export const Header = () => {
       </Row>
       <RowList>
         {MENU_KEYS.map(
-          (key: TMenuKey) => (
-            <Item key={key}>
-              <Button
-                initial={false}
-                style={{ opacity: 1 }}
-                whileHover={{
-                  opacity: 0.8,
-                }}
-                onTap={() => {
-                  console.log("tap");
-                  console.log(dispatch);
-
-                  dispatch({
-                    type: "active",
-                    value: {
-                      [key]: true,
-                    },
-                  });
-                }}
-              >
-                <Text>{key}</Text>
-              </Button>
-              {active[key] &&
-                RECORD[key]}
-            </Item>
-          )
+          (key: TMenuKey) => {
+            const isActive =
+              menu === key;
+            return (
+              <Item key={key}>
+                {isActive && (
+                  <Selected
+                    key={key}
+                    layoutId="Selected"
+                    initial={{
+                      opacity: 0,
+                    }}
+                    animate={{
+                      opacity: 1,
+                    }}
+                    exit={{
+                      opacity: 0,
+                    }}
+                  />
+                )}
+                <Button
+                  initial={false}
+                  style={{ opacity: 1 }}
+                  whileHover={{
+                    opacity: 0.8,
+                  }}
+                  onTap={() =>
+                    dispatch({
+                      type: "menu",
+                      value: isActive
+                        ? null
+                        : key,
+                    })
+                  }
+                >
+                  <Text>{key}</Text>
+                </Button>
+              </Item>
+            );
+          }
         )}
       </RowList>
     </Root>

@@ -11,6 +11,7 @@ export const INIT_STATE: TState = {
   context,
   sound: SOUND_CONFIG_DEFAULT,
   style: STYLE_CONFIG_DEFAULT,
+  menu: null,
   active: {},
   loading: {},
   ready: true,

@@ -10,9 +10,11 @@ const root =
   document.getElementById("root");
 if (root)
   ReactDOM.createRoot(root).render(
-    <ErrorBoundary>
-      <Router>
-        <Layout />
-      </Router>
-    </ErrorBoundary>
+    <Provider>
+      <ErrorBoundary>
+        <Router>
+          <Layout />
+        </Router>
+      </ErrorBoundary>
+    </Provider>
   );
