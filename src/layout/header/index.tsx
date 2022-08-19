@@ -50,7 +50,7 @@ const Root = styled.header`
     0.2
   ); */
   border-bottom: ${GLASS_PURPLE_BORDER};
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;

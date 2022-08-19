@@ -37,3 +37,10 @@ export const columnEnd = css`
   justify-content: center;
   flex-direction: column;
 `;
+
+export const columnStartEnd = css`
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  flex-direction: column;
+`;

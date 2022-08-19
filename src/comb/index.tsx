@@ -7,26 +7,18 @@ import { resolveMidis } from "./config";
 
 export const TOTAL_KEYS = 80;
 
-const Root = styled.div`
-  position: relative;
-  height: 100vh;
-  width: 100%;
-`;
-
 export const Comb = () => (
-  <Root>
-    <Canvas>
-      <OrbitControls />
-      <Lights />
-      {resolveMidis({
-        from: 20,
-        total: TOTAL_KEYS + 20,
-      }).map((_, index: number) => (
-        <Tooth
-          key={`Tooth-${index}`}
-          index={index}
-        />
-      ))}
-    </Canvas>
-  </Root>
+  <Canvas>
+    <OrbitControls />
+    <Lights />
+    {resolveMidis({
+      from: 20,
+      total: TOTAL_KEYS + 20,
+    }).map((_, index: number) => (
+      <Tooth
+        key={`Tooth-${index}`}
+        index={index}
+      />
+    ))}
+  </Canvas>
 );
