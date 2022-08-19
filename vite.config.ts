@@ -5,18 +5,7 @@ import pages from "vite-plugin-pages";
 
 export default defineConfig({
   plugins: [
-    react({
-      babel: {
-        plugins: [
-          [
-            "babel-plugin-styled-components",
-            {
-              displayName: true
-            },
-          ],
-        ],
-      },
-    }),
+    react(),
     pages({
       dirs: "src/entry/",
     }),
