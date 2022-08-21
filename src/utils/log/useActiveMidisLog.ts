@@ -5,8 +5,6 @@ export const useActiveMidisLog = (
 ) => {
   const inRangeMidis =
     midis.slice(FROM_KEY);
-  console.log(midis);
-  console.log(inRangeMidis);
 
   console.log(
     `ACTIVE MIDIS:

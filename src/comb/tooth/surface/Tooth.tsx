@@ -9,47 +9,45 @@ import {
 import { useContext } from "../../../state/Context";
 import { useContext as useToothContext } from "../../../state/tooth/Context";
 import {
-  FROM_KEY,
-  TOTAL_KEYS,
-} from "../../../config";
-import { Text } from "@react-three/drei";
-import { resolveX } from "./config";
+  resolveColor,
+  resolveTapColor,
+  resolveX,
+} from "./config";
 
 export const Tooth: FC = () => {
   const { midis } = useContext();
   const { midi } = useToothContext();
   const isActive = midis[midi];
+  console.log(`isActive: ${isActive}`);
+  const color = resolveColor(
+    isActive,
+    midi
+  );
 
-  const handleTap = () => {
-    console.log("play");
+  const active = {
+    color: resolveTapColor(midi),
   };
 
-  const x = resolveX(midi);
-
-  const positionKey: [
-    x: number,
-    y: number,
-    z: number
-  ] = [x, 0, 0];
-
   return (
-    <motion.mesh
-      position={positionKey}
-      onTap={handleTap}
-    >
+    <motion.mesh>
       <motion.boxGeometry
-        initial={{ x: 0 }}
-        animate={{ x: midi * 1 }}
+        variants={{
+          animate: { x: midi * 1 },
+          tap: { x: midi * 1 },
+        }}
         args={[WIDTH, HEIGHT, DEPTH]}
       />
       <motion.meshPhongMaterial
-        color={`hsl(${
-          isActive ? 0 : 280
-        },${isActive ? 40 : 100}%,${
-          isActive ? 40 : 100
-        }%)`}
-        specular="#61dafb"
-        shininess={2}
+        color={color}
+        variants={{
+          animate: {
+            color,
+          },
+          active,
+          tap: active,
+        }}
+        specular="#757575"
+        shininess={1}
       />
     </motion.mesh>
   );
