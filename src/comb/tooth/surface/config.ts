@@ -19,3 +19,8 @@ export const resolveColor = (
   },${isActive ? 90 : 40}%,${
     isActive ? 90 : 40
   }%)`;
+
+export const resolveTapColor = (
+  midi: number
+) =>
+  `hsl(${100 + midi},90%,90%)`;
