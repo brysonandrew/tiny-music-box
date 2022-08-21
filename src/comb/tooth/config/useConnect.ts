@@ -3,18 +3,19 @@ import { useContext as useToothContext } from "../../../state/tooth/Context";
 
 export const useConnect = () => {
   const { context } = useContext();
-  const { o, d, g } = useToothContext();
+  const { o, d, g, g2, w } =
+    useToothContext();
+  const {
+    currentTime: t,
+    destination,
+  } = context;
 
-  o.connect(d);
+  g.gain.setValueAtTime(0, t);
+  o.connect(g);
 
-  // d.connect(g2);
-  // g2.connect(d);
+  //d.connect(g).connect(w).connect(d);
 
-  // n.connect(g);
-  
-  // w.connect(g2);
+  //d.connect(g2);
 
-  g.connect(d).connect(
-    context.destination
-  );
+  g.connect(destination);
 };

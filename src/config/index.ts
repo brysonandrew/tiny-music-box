@@ -1,3 +1,5 @@
+export const NOOP = () => null;
+
 export type TMidiConfig = {
   from: number;
   total: number;
@@ -29,12 +31,11 @@ export const BEAT_COUNT = 16;
 export const DETUNE_NORMAL_RANGE = {
   min: -1,
   max: 1,
-  step: 0.00083333333,
+  step: 0.00083333333, // 1/1200
 };
 
-export const FROM_KEY = 20;
-export const TOTAL_KEYS = 2;
-
+export const FROM_KEY = 40;
+export const TOTAL_KEYS = 12;
 
 export const MIDI_KEYS: number[] =
   resolveKeys({
@@ -45,11 +46,11 @@ export const MIDI_KEYS: number[] =
 export const MIDIS: boolean[] =
   resolveMidis({
     from: FROM_KEY,
-    total: TOTAL_KEYS + FROM_KEY,
+    total: TOTAL_KEYS,
   });
 
 export const INIT_MIDIS: null[] =
   resolveInitMidis({
     from: FROM_KEY,
-    total: TOTAL_KEYS + FROM_KEY,
+    total: TOTAL_KEYS,
   });

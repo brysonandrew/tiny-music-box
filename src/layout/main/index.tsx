@@ -8,6 +8,8 @@ import {
   SIDE_WIDTH,
 } from "../../styles/constants";
 import { GLASS_CSS } from "../../styles/glass";
+import { Canvas } from "@react-three/fiber";
+import { Provider } from "../../state/Provider";
 
 const Root = styled(motion.div)`
   ${GLASS_CSS}
@@ -29,8 +31,7 @@ const Root = styled(motion.div)`
 `;
 
 export const Main = () => {
-  const { menu, dispatch } =
-    useContext();
+  const { menu } = useContext();
 
   const isSide = Boolean(menu);
 
@@ -40,7 +41,11 @@ export const Main = () => {
         left: isSide ? -SIDE_WIDTH : 0,
       }}
     >
-      <Comb />
+      <Canvas>
+        <Provider>
+          <Comb />
+        </Provider>
+      </Canvas>
     </Root>
   );
 };

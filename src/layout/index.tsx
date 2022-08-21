@@ -1,7 +1,7 @@
 import { MotionConfig } from "framer-motion";
-import { Comb } from "../comb";
 import { Provider } from "../state/Provider";
 import { Controls } from "./controls";
+import { Main } from "./main";
 
 export const Layout = () => (
   <Provider>
@@ -11,7 +11,7 @@ export const Layout = () => (
         duration: 0.4,
       }}
     >
-      <Comb />
+      <Main />
       <Controls />
     </MotionConfig>
   </Provider>

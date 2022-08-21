@@ -1,17 +1,52 @@
-import styled from "@emotion/styled";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
 import { Tooth } from "./tooth";
-import { Lights } from "./Lights";
-import { MIDI_KEYS } from "../config";
-import { Provider } from "../state/Provider";
+import {
+  FROM_KEY,
+  MIDI_KEYS,
+  NOOP,
+} from "../config";
+import { useKey } from "../handlers";
+import { useContext } from "../state/Context";
+import { Ambient } from "./ambient";
+import { useActiveMidisLog } from "../utils/log/useActiveMidisLog";
 
-export const Comb = () => (
-  <Canvas>
-    <Provider>
+export const Comb = () => {
+  const { midis, dispatch } =
+    useContext();
+
+  const handleKey = ({
+    key,
+    repeat,
+  }: any) => {
+    const numberKey = +key;
+    if (
+      !repeat &&
+      typeof numberKey === "number" &&
+      !isNaN(numberKey)
+    ) {
+      const value =
+        numberKey + FROM_KEY;
+      console.log(`NEXT MIDI:
+      ${value}`);
+
+      dispatch({
+        type: "midis",
+        value,
+      });
+    }
+  };
+
+  useKey({
+    handlers: {
+      onKeyDown: handleKey,
+      onKeyUp: NOOP,
+    },
+    isActive: true,
+  });
+  useActiveMidisLog(midis);
+  return (
+    <>
+      <Ambient />
       <>
-        <OrbitControls />
-        <Lights />
         {MIDI_KEYS.map(
           (midi: number) => (
             <Tooth
@@ -21,6 +56,6 @@ export const Comb = () => (
           )
         )}
       </>
-    </Provider>
-  </Canvas>
-);
+    </>
+  );
+};

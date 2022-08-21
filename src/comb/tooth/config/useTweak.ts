@@ -1,16 +1,27 @@
 import type { TNodeRecord } from "../../../state/constants/node-record";
 import { useContext } from "../../../state/Context";
 import { useContext as useToothContext } from "../../../state/tooth/Context";
-
+const DURATION = 1;
 const useOscillator = () => {
   const { o } = useToothContext();
   const { sound } = useContext();
   o.detune.value = sound.detune;
   o.type = "triangle";
 };
+
+const useGain = () => {
+  const { g } = useToothContext();
+  const {
+    context: { currentTime: t },
+    sound: { gain },
+  } = useContext();
+  const e = t + DURATION;
+  g.gain.setValueAtTime(gain, t);
+  g.gain.linearRampToValueAtTime(0, e);
+};
+
 const useDelay = () => {
   const { d } = useToothContext();
-
   const {
     sound: { delay },
   } = useContext();
@@ -34,12 +45,12 @@ const useNoise = ([t, e]: [
       e
     );
 };
+
 const useKarplusStrong = ([t, e]: [
   number,
   number
 ]) => {
   const { w } = useToothContext();
-
   const {
     sound: { depth },
   } = useContext();
@@ -57,25 +68,11 @@ const useKarplusStrong = ([t, e]: [
     );
 };
 
-const useGain = ([t, e]: [
-  number,
-  number
-]) => {
-  const { g } = useToothContext();
-
-  const {
-    sound: { gain },
-  } = useContext();
-  g.gain.setValueAtTime(gain, t);
-  g.gain.linearRampToValueAtTime(0, e);
-};
-
 const useDecay = ([t, e]: [
   number,
   number
 ]) => {
   const { g2 } = useToothContext();
-
   const {
     sound: { decay },
   } = useContext();
@@ -84,21 +81,11 @@ const useDecay = ([t, e]: [
 };
 
 export const useTweak = () => {
-  const { context, sound, midis } =
-    useContext();
-  const { midi } = useToothContext();
-  const { span } = sound;
-  const isActive = midis[midi];
-
-  
-  const bpm = 100;
-  const t = context.currentTime;
-  const e = t + span / bpm;
-
   useOscillator();
-  useNoise([t, e]);
-  useDelay();
-  useKarplusStrong([t, e]);
-  useGain([t, e]);
-  useDecay([t, e]);
+  useGain();
+
+  // useNoise([t, e]);
+  // useDelay();
+  // useKarplusStrong([t, e]);
+  // useDecay([t, e]);
 };

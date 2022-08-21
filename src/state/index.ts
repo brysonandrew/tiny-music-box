@@ -48,7 +48,6 @@ export const reducer = (
   state: TState,
   { type, value }: TReducerAction
 ) => {
-  console.log(type, value);
   switch (type) {
     case "state": {
       return { ...state, ...value };
@@ -97,19 +96,25 @@ export const reducer = (
         },
       };
     }
+    case "midis": {
+      const midis = state.midis.map(
+        (isMidi, midi) =>
+          midi === value
+            ? !state.midis[midi]
+            : isMidi
+      );
+      return { ...state, midis };
+    }
+
     case "initMidis": {
       const v: TInitMidiValue = value;
-      console.log("initMidis");
-      console.log(v);
-
       const initMidis =
         state.initMidis.map(
-          (isMidi, midi) =>
+          (midiRecord, midi) =>
             midi === v.midi
               ? v.nodeRecord
-              : isMidi
+              : midiRecord
         );
-      console.log(initMidis);
       return { ...state, initMidis };
     }
     default: {

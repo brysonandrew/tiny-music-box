@@ -14,7 +14,7 @@ export const Context: ReactContext<TContext> =
     ...INIT_STATE,
     dispatch: (_: TAction) => null,
   });
-
+ 
 export const useContext =
   (): TContext =>
     useReactContext<TContext>(Context);

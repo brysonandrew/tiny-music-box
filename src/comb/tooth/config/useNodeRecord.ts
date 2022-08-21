@@ -18,12 +18,6 @@ export const useNodeRecord = (
   const refCount = useRef(0);
 
   useEffect(() => {
-    if (refCount.current > 1) {
-      console.error(
-        "excess init node count " +
-          refCount.current
-      );
-    }
     const init = async () => {
       const t = context.currentTime;
       await context.audioWorklet.addModule(
@@ -59,23 +53,11 @@ export const useNodeRecord = (
           ),
         },
       };
-      // console.log(value);
-      // console.log("----");
-
-      console.log("HERE");
-      console.log(dispatch.toString());
-      console.log(dispatch);
-      console.log("HERE");
-      // console.log("----");
-
       dispatch({
         type: "initMidis",
         value,
       });
-      dispatch({
-        type: "ready",
-        value: true,
-      });
+      
       refCount.current++;
     };
 
