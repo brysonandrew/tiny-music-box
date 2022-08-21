@@ -24,11 +24,11 @@ const resolveValue = ({
   value;
 
 export const Sound: FC = () => {
-  const { dispatch } = useContext();
+  const { sound, dispatch } = useContext();
   return (
     <SliderList<TKey, TValue>
       keyValuePairs={Object.entries(
-        SOUND_CONFIG_DEFAULT
+        sound
       )}
       resolvers={{
         label: {

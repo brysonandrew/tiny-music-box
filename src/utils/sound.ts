@@ -1,4 +1,4 @@
-export const midi2Freq = (
+export const midiToFreq = (
   noteNum: number,
   baseNote?: number
 ) =>

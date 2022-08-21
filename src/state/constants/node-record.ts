@@ -1,5 +1,4 @@
-export type TRef = {
-  isOn: boolean;
+export type TNodeRecord = {
   o: OscillatorNode;
 
   d: DelayNode;
@@ -11,4 +10,6 @@ export type TRef = {
   w: AudioWorkletNode;
   n: AudioWorkletNode;
 };
-export type TInitRef = TRef | null;
+
+export type TNodeRecordInit =
+  TNodeRecord | null;

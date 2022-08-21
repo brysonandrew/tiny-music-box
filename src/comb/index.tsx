@@ -3,22 +3,24 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { Tooth } from "./tooth";
 import { Lights } from "./Lights";
-import { resolveMidis } from "./config";
-
-export const TOTAL_KEYS = 80;
+import { MIDI_KEYS } from "../config";
+import { Provider } from "../state/Provider";
 
 export const Comb = () => (
   <Canvas>
-    <OrbitControls />
-    <Lights />
-    {resolveMidis({
-      from: 20,
-      total: TOTAL_KEYS + 20,
-    }).map((_, index: number) => (
-      <Tooth
-        key={`Tooth-${index}`}
-        index={index}
-      />
-    ))}
+    <Provider>
+      <>
+        <OrbitControls />
+        <Lights />
+        {MIDI_KEYS.map(
+          (midi: number) => (
+            <Tooth
+              key={`Tooth-${midi}`}
+              midi={midi}
+            />
+          )
+        )}
+      </>
+    </Provider>
   </Canvas>
 );

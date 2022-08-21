@@ -1,2 +1,2 @@
-export { midi2Freq } from "./sound";
+export { midiToFreq } from "./sound";
 export { nameToTitle } from "./text";

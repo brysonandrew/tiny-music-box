@@ -2,6 +2,7 @@ import { INIT_STATE } from "./constants";
 import type {
   TState,
   TReducerAction,
+  TInitMidiValue,
 } from "./types";
 
 export const resolveHydrationState = (
@@ -10,12 +11,16 @@ export const resolveHydrationState = (
 ): TState => {
   const baseState =
     savedState ?? INIT_STATE;
-  const { context, ...appState } =
-    baseState;
+  const {
+    context,
+    initMidis,
+    ...appState
+  } = baseState;
   return {
     ...state,
     ...appState,
     context: INIT_STATE.context,
+    initMidis: INIT_STATE.initMidis,
   };
 };
 export const resolvePostHydrationState =
@@ -25,12 +30,16 @@ export const resolvePostHydrationState =
   ): TState => {
     const baseState =
       savedState ?? INIT_STATE;
-    const { context, ...appState } =
-      baseState;
+    const {
+      context,
+      initMidis,
+      ...appState
+    } = baseState;
     return {
       ...state,
       ...appState,
       context: INIT_STATE.context,
+      initMidis: INIT_STATE.initMidis,
       ready: true,
     };
   };
@@ -39,7 +48,6 @@ export const reducer = (
   state: TState,
   { type, value }: TReducerAction
 ) => {
-  console.log(state);
   console.log(type, value);
   switch (type) {
     case "state": {
@@ -52,7 +60,6 @@ export const reducer = (
       };
     }
     case "active": {
-      console.log("active");
       return {
         ...state,
         active: value,
@@ -60,7 +67,6 @@ export const reducer = (
       };
     }
     case "menu": {
-      console.log(value);
       return {
         ...state,
         menu: value,
@@ -72,6 +78,39 @@ export const reducer = (
         ...value,
         ready: true,
       };
+    }
+    case "sound": {
+      return {
+        ...state,
+        sound: {
+          ...state.sound,
+          ...value,
+        },
+      };
+    }
+    case "style": {
+      return {
+        ...state,
+        style: {
+          ...state.style,
+          ...value,
+        },
+      };
+    }
+    case "initMidis": {
+      const v: TInitMidiValue = value;
+      console.log("initMidis");
+      console.log(v);
+
+      const initMidis =
+        state.initMidis.map(
+          (isMidi, midi) =>
+            midi === v.midi
+              ? v.nodeRecord
+              : isMidi
+        );
+      console.log(initMidis);
+      return { ...state, initMidis };
     }
     default: {
       console.error(type);

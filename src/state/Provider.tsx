@@ -4,14 +4,12 @@ import {
   useRef,
 } from "react";
 import type { FC } from "react";
-
 import { Context } from "./Context";
 import {
   reducer,
   resolveHydrationState,
   resolvePostHydrationState,
 } from ".";
-
 import {
   INIT_STATE,
   _STATE_STORAGE_KEY,
@@ -39,7 +37,6 @@ export const Provider: FC<
     TState
   >(
     (...args) => {
-      console.log(args);
       const nextState = reducer(
         ...args
       );
@@ -72,13 +69,14 @@ export const Provider: FC<
   useEffect(() => {
     readyRef.current();
   }, []);
-
+  const init = {
+    ...state,
+    dispatch,
+  };
+  
   return (
     <Context.Provider
-      value={{
-        dispatch,
-        ...state,
-      }}
+      value={init}
     >
       {children}
     </Context.Provider>

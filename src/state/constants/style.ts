@@ -20,6 +20,4 @@ export type TStyleConfig = Record<
   number
 >;
 export const STYLE_CONFIG_DEFAULT: TStyleConfig =
-  {
-    hue: 0,
-  };
+  { hue: 0 };

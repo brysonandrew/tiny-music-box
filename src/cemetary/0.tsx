@@ -1,22 +1,23 @@
-import type { MutableRefObject } from "react";
-import { useContext } from "../../../state/Context";
-import { midi2Freq } from "../../../utils";
+import { useContext } from "../state/Context";
+import { midiToFreq } from "../utils";
 import type {
   TInitRef,
   TRef,
-} from "./ref";
-import { SOUND_CONFIG } from "./sound";
+} from "../init/nodeRecord";
+import { SOUND_CONFIG } from "../comb/tooth/init/sound";
 
 export type TPlayConfig = {
-  index: number;
+  midi: number;
   ref: TInitRef;
 };
 export const usePlay = ({
-  index,
+  midi,
   ref,
 }: TPlayConfig) => {
   const { context } = useContext();
   return () => {
+    console.log("tap " + midi);
+    console.log(ref);
     if (ref) {
       const {
         decay,
@@ -27,12 +28,11 @@ export const usePlay = ({
         span,
       } = SOUND_CONFIG;
 
-      const t = context.currentTime;
       const bpm = 100;
+      const t = context.currentTime;
       const e = t + 60 / bpm;
-
-      const midi = index + 20;
-      const f = midi2Freq(midi);
+      const f = midiToFreq(midi);
+      console.log(`frequency: ${f}`);
 
       ref.o.frequency.setValueAtTime(
         f,
@@ -48,6 +48,7 @@ export const usePlay = ({
         ref.isOn = true;
         ref.o.start(t);
       }
+      console.log("on " + ref.isOn);
 
       if (ref.n) {
         ref.n.connect(ref.g2);

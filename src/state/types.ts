@@ -1,11 +1,7 @@
-import type {
-  Dispatch,
-  Reducer,
-  ReducerState,
-  ReducerAction,
-} from "react";
+import type {  Dispatch,  Reducer,  ReducerState,  ReducerAction,} from "react";
 import type { TMenuKey } from "../layout/header/config";
 import type { INIT_STATE } from "./constants";
+import type { TNodeRecord } from "./constants/node-record";
 import type { TSoundConfig } from "./constants/sound";
 import type { TStyleConfig } from "./constants/style";
 
@@ -28,6 +24,8 @@ export type TState = {
     >
   >;
   ready: boolean;
+  midis: boolean[];
+  initMidis: (null | TNodeRecord)[];
 };
 
 export type TActionType =
@@ -70,3 +68,8 @@ export const ACTIVE = [
 ] as const;
 export type TActiveKey =
   typeof ACTIVE[number];
+
+export type TInitMidiValue = {
+  midi: number;
+  nodeRecord: TNodeRecord;
+};

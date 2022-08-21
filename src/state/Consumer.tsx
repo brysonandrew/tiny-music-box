@@ -1,6 +1,6 @@
 import type { FC } from "react";
 import { Context } from "./Context";
-import { TState } from "./types";
+import type { TState } from "./types";
 
 type TConsumerProps = { children(values: TState): JSX.Element };
 export const Consumer: FC<TConsumerProps> = ({ children }) => (

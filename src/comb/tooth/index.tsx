@@ -1,46 +1,39 @@
 import type { FC } from "react";
-import { motion } from "framer-motion-3d";
-import { TOTAL_KEYS } from "..";
-import {
-  STAGGER,
-  WIDTH,
-  HEIGHT,
-  DEPTH,
-} from "./config/size";
-import { useConfig } from "./config/useConfig";
-import { usePlay } from "./config/usePlay";
+import type { TNodeRecord } from "../../state/constants/node-record";
+import { useContext } from "../../state/Context";
+import { Provider } from "../../state/tooth/Provider";
+import { useNodeRecord } from "./config/useNodeRecord";
+import { Connect } from "./connect";
+import { Tweak } from "./connect/tweak";
+import { Surface } from "./connect/tweak/surface";
 
-type TProps = { index: number };
+type TProps = {
+  midi: number;
+};
 export const Tooth: FC<TProps> = ({
-  index,
+  midi,
 }) => {
-  const ref = useConfig();
-  const handleTap = usePlay({
-    index,
-    ref,
-  });
+  const {
+    initMidis,
+    dispatch,
+    ...rest
+  } = useContext();
+  useNodeRecord(midi);
 
+  if (!initMidis[midi]) return null;
+  console.log(initMidis[midi]);
   return (
-    <motion.mesh
-      position={[
-        STAGGER * index -
-          TOTAL_KEYS * 0.5 * STAGGER,
-        0,
-        0,
-      ]}
-      onTap={handleTap}
-      rotation-z={0}
+    <Provider
+      midi={midi}
+      nodeRecord={
+        initMidis[midi] as TNodeRecord
+      }
     >
-      <motion.boxGeometry
-        initial={{ x: 0 }}
-        animate={{ x: index * 1 }}
-        args={[WIDTH, HEIGHT, DEPTH]}
-      />
-      <motion.meshPhongMaterial
-        color={`hsl(0,80%,80%)`}
-        specular="#61dafb"
-        shininess={2}
-      />
-    </motion.mesh>
+      <Connect>
+        <Tweak>
+          <Surface />
+        </Tweak>
+      </Connect>
+    </Provider>
   );
 };

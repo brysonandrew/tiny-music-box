@@ -3,8 +3,14 @@ import { motion } from "framer-motion";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import type { TSliderAttributes } from "..";
-import { rowGap } from "../../styles/decorators";
-import { textMdCss } from "../../styles/text";
+import {
+  rowCenter,
+  rowGap,
+} from "../../styles/decorators";
+import {
+  textMdCss,
+  textXsCss,
+} from "../../styles/text";
 import type { TRequireAtLeastOne } from "../../types";
 import { Slider as SliderDark } from "..";
 import { HEADER_HEIGHT } from "../../styles/constants";
@@ -23,7 +29,7 @@ const Item = styled(motion.li)`
   justify-content: flex-end;
   height: 72px;
   width: 100%;
-  &:first-child {
+  &:first-of-type {
     margin-top: 0;
   }
 `;
@@ -35,16 +41,18 @@ const Row = styled.div`
 `;
 
 const itemCss = css`
-  ${textMdCss}
   letter-spacing: 2px;
   padding: 8px;
 `;
 const Title = styled.h4`
+  ${textMdCss}
   ${itemCss}
 `;
 
 const Value = styled.h4`
+  ${rowCenter}
   ${itemCss}
+  ${textXsCss}
 `;
 export type TListConfig = {
   id: string;
@@ -113,17 +121,19 @@ export const SliderList = <
       >) => (
         <Item key={key}>
           <Row>
-            <Title>
+            <Title className="--title">
               {label.title({
                 key,
                 value,
               })}
             </Title>
             <Value className="--value">
-              {label.value({
-                key,
-                value,
-              })}
+              {
+                +(+label.value({
+                  key,
+                  value,
+                })).toFixed(8)
+              }
             </Value>
           </Row>
           <SliderDark

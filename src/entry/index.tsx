@@ -1,3 +1,3 @@
-import { Comb } from "../comb";
+import { Layout } from "../layout";
 
-export default () => <Comb />;
+export default () => <Layout />;

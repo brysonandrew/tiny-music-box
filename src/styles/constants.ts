@@ -34,3 +34,4 @@ export const GLASS_BLUE =
   "rgba(28, 89, 183, 0.1)";
 
 export const HEADER_HEIGHT = 89;
+export const SIDE_WIDTH = 280;

@@ -24,11 +24,12 @@ const resolveValue = ({
   value;
 
 export const Style: FC = () => {
-  const { dispatch } = useContext();
+  const { style, dispatch } =
+    useContext();
   return (
     <SliderList<TKey, TValue>
       keyValuePairs={Object.entries(
-        STYLE_CONFIG_DEFAULT
+        style
       )}
       resolvers={{
         label: {
