@@ -13,7 +13,10 @@ import {
   TOTAL_KEYS,
 } from "../../../config";
 import { Text } from "@react-three/drei";
-import { resolveX } from "./config";
+import {
+  resolveColor,
+  resolveX,
+} from "./config";
 
 export const Label: FC = () => {
   const { midis } = useContext();
@@ -37,9 +40,10 @@ export const Label: FC = () => {
   return (
     <motion.mesh position={position}>
       <Text
-        color={
-          isActive ? 0x9966ff : 0xffffff
-        }
+        color={resolveColor(
+          isActive,
+          midi
+        )}
         characters="0123456789"
         fontSize={0.12}
         lineHeight={1}

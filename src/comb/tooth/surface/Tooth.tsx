@@ -13,7 +13,7 @@ import {
   TOTAL_KEYS,
 } from "../../../config";
 import { Text } from "@react-three/drei";
-import { resolveX } from "./config";
+import { resolveColor, resolveX } from "./config";
 
 export const Tooth: FC = () => {
   const { midis } = useContext();
@@ -43,13 +43,12 @@ export const Tooth: FC = () => {
         args={[WIDTH, HEIGHT, DEPTH]}
       />
       <motion.meshPhongMaterial
-        color={`hsl(${
-          isActive ? 0 : 280
-        },${isActive ? 40 : 100}%,${
-          isActive ? 40 : 100
-        }%)`}
-        specular="#61dafb"
-        shininess={2}
+        color={resolveColor(
+          isActive,
+          midi
+        )}
+        specular="#757575"
+        shininess={1}
       />
     </motion.mesh>
   );
