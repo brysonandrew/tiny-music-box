@@ -78,6 +78,15 @@ export const reducer = (
         ready: true,
       };
     }
+    case "adsr": {
+      return {
+        ...state,
+        adsr: {
+          ...state.adsr,
+          ...value,
+        },
+      };
+    }
     case "tweak": {
       return {
         ...state,

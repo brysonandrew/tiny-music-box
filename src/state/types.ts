@@ -9,6 +9,7 @@ import type { INIT_STATE } from "./constants";
 import type { TNodeRecord } from "./constants/node-record";
 import type { TTweakConfig } from "./constants/tweak";
 import type { TStyleConfig } from "./constants/style";
+import type { TAdsrConfig } from "./constants/adsr";
 
 export type TContext = TState & {
   dispatch: TDispatch;
@@ -20,6 +21,7 @@ export type TState = {
   active: Partial<
     Record<TActiveKey, boolean>
   >;
+  adsr: TAdsrConfig;
   tweak: TTweakConfig;
   style: TStyleConfig;
   loading: Partial<

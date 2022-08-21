@@ -1,7 +1,8 @@
-import type { TNodeRecord } from "../../../state/constants/node-record";
 import { useContext } from "../../../state/Context";
 import { useContext as useToothContext } from "../../../state/tooth/Context";
+
 const DURATION = 1;
+
 const useOscillator = () => {
   const { o } = useToothContext();
   const { tweak } = useContext();
@@ -16,7 +17,10 @@ const useGain = () => {
     tweak: { gain },
   } = useContext();
   const e = t + DURATION;
-  g.gain.setValueAtTime(gain, t);
+  g.gain.linearRampToValueAtTime(
+    gain,
+    t
+  );
   g.gain.linearRampToValueAtTime(0, e);
 };
 

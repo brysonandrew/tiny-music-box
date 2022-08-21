@@ -1,3 +1,6 @@
+import type { InputHTMLAttributes } from "react";
+import type { MotionProps } from "framer-motion";
+
 export const NOOP = () => null;
 
 export type TMidiConfig = {
@@ -54,3 +57,18 @@ export const INIT_MIDIS: null[] =
     from: FROM_KEY,
     total: TOTAL_KEYS,
   });
+
+export type TInputStyledProps = {
+  isEmpty: boolean;
+};
+
+export type TInputAttributes =
+  InputHTMLAttributes<HTMLInputElement> &
+    MotionProps;
+
+export const NORMAL_SLIDER_RANGE: TInputAttributes =
+  {
+    min: 0,
+    max: 1,
+    step: 0.1,
+  };
