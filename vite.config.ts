@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import glsl from "vite-plugin-glsl";
 import pages from "vite-plugin-pages";
+import viteRestart from "vite-plugin-restart";
 
 export default defineConfig({
   plugins: [
@@ -10,6 +11,10 @@ export default defineConfig({
       dirs: "src/entry/",
     }),
     glsl(),
+    viteRestart({
+      restart:
+        "src/state/constants/adsr.ts",
+    }),
   ],
   publicDir: "assets",
 });

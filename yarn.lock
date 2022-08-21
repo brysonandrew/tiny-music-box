@@ -3784,7 +3784,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"micromatch@npm:^4.0.4":
+"micromatch@npm:^4.0.4, micromatch@npm:^4.0.5":
   version: 4.0.5
   resolution: "micromatch@npm:4.0.5"
   dependencies:
@@ -5033,6 +5033,7 @@ __metadata:
     vite-plugin-glsl: ^0.1.2
     vite-plugin-node: ^1.0.0
     vite-plugin-pages: ^0.23.0
+    vite-plugin-restart: ^0.2.0
     webgl-strict-types: ^1.0.5
   languageName: unknown
   linkType: soft
@@ -5278,6 +5279,17 @@ __metadata:
     "@vue/compiler-sfc":
       optional: true
   checksum: a63b15194895bbdc020af4fcabc1505977a7746f15cc1d595fb4cb1b2140136446c37fee97661b39ffec6fb6b7127a24c39c57959c11ba55d97fa4e432a9769d
+  languageName: node
+  linkType: hard
+
+"vite-plugin-restart@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "vite-plugin-restart@npm:0.2.0"
+  dependencies:
+    micromatch: ^4.0.5
+  peerDependencies:
+    vite: ^2.9.0 || ^3.0.0
+  checksum: bdd8a58ca632063390ed457c8f7c51447cd4598f7dc38430c32dd4ab09e7ebc065f244ddddf273db2646176a465811ab7283593225a48f14209c25abd74a1c97
   languageName: node
   linkType: hard
 

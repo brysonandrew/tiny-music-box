@@ -15,6 +15,7 @@ import { nameToTitle } from "../../utils";
 import {
   textLgCss,
   textMdCss,
+  textSmCss,
 } from "../../styles/text";
 import {
   GAP,
@@ -24,10 +25,11 @@ import {
   GLASS_PURPLE,
   GLASS_PURPLE_0125,
   GLASS_PURPLE_BORDER,
-  GLASS_PURPLE_DARK,
+  GLASS_PURPLE_09,
   GLASS_WHITE,
   GLASS_WHITE_02,
   GLASS_WHITE_BORDER,
+  GLASS_BLACK,
   HEADER_HEIGHT,
 } from "../../styles/constants";
 import { GLASS_CSS } from "../../styles/glass";
@@ -35,14 +37,13 @@ import { css } from "@emotion/react";
 
 const buttonCss = css`
   padding: ${GAP_025}px ${GAP_05}px;
-  mix-blend-mode: exclusion;
+  /* mix-blend-mode: exclusion; */
 `;
 
 const Root = styled.header`
   ${GLASS_CSS}
   ${rowGap}
-  /* border-bottom-left-radius: 16px;
-  border-bottom-right-radius: 16px; */
+  border-bottom-left-radius: ${GAP}px;
   background-image: radial-gradient(
       ellipse at top,
       ${GLASS_PURPLE},
@@ -53,12 +54,6 @@ const Root = styled.header`
       ${GLASS_WHITE_02},
       transparent
     );
-  /* background-color: rgba(
-    255,
-    255,
-    255,
-    0.2
-  ); */
   border-bottom: ${GLASS_PURPLE_BORDER};
   position: relative;
   top: 0;
@@ -117,7 +112,14 @@ const Button = styled(motion.button)`
 
 const Label = styled(motion.span)`
   ${rowCenter}
-  ${textMdCss}
+  ${textSmCss}
+  text-shadow:
+   -1px -1px 0 ${GLASS_PURPLE},  
+    1px -1px 0 ${GLASS_PURPLE},
+    -1px 1px 0 ${GLASS_PURPLE},
+     1px 1px 0 ${GLASS_PURPLE};
+  /* -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: ${GLASS_BLACK}; */
 `;
 
 export const Header = () => {
@@ -133,7 +135,7 @@ export const Header = () => {
       animate={{
         opacity: 1,
         backgroundColor: menu
-          ? GLASS_PURPLE_DARK
+          ? GLASS_PURPLE_09
           : GLASS_PURPLE_0125,
         border: menu
           ? GLASS_PURPLE_BORDER
@@ -196,7 +198,7 @@ export const Header = () => {
                     })
                   }
                 >
-                  <Label>
+                  <Label className="--value">
                     {icon} {key}
                   </Label>
                 </Button>

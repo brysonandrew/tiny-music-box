@@ -61,6 +61,7 @@
     "vite-plugin-glsl": "^0.1.2",
     "vite-plugin-node": "^1.0.0",
     "vite-plugin-pages": "^0.23.0",
+    "vite-plugin-restart": "^0.2.0",
     "webgl-strict-types": "^1.0.5"
   },
   "packageManager": "yarn@3.2.0"
