@@ -2,16 +2,19 @@ import type {
   FC,
   SyntheticEvent,
 } from "react";
-import type { TSoundConfigKey } from "../../../state/constants/sound";
+import type { TTweakConfigKey } from "../../../state/constants/tweak";
 import {
-  SOUND_CONFIG_DEFAULT,
-  SOUND_RANGE,
-} from "../../../state/constants/sound";
-import type { TResolverConfig } from "../../../slider/list";
+  TWEAK_CONFIG_DEFAULT,
+  TWEAK_RANGE,
+} from "../../../state/constants/tweak";
+import type {
+  TResolverConfig,
+  TKeyValuePair,
+} from "../../../slider/list";
 import { SliderList } from "../../../slider/list";
 import { useContext } from "../../../state/Context";
 
-type TKey = TSoundConfigKey;
+type TKey = TTweakConfigKey;
 type TValue = number;
 const resolveName = ({
   key,
@@ -23,13 +26,19 @@ const resolveValue = ({
 }: TResolverConfig<TKey, TValue>) =>
   value;
 
-export const Sound: FC = () => {
-  const { sound, dispatch } = useContext();
+export const Tweak: FC = () => {
+  const { tweak, dispatch } =
+    useContext();
   return (
     <SliderList<TKey, TValue>
-      keyValuePairs={Object.entries(
-        sound
-      )}
+      keyValuePairs={
+        Object.entries(
+          tweak ?? TWEAK_CONFIG_DEFAULT
+        ) as TKeyValuePair<
+          TKey,
+          TValue
+        >[]
+      }
       resolvers={{
         label: {
           title: resolveName,
@@ -53,7 +62,7 @@ export const Sound: FC = () => {
             currentTarget,
           }: SyntheticEvent<HTMLInputElement>) => {
             dispatch({
-              type: "sound",
+              type: "tweak",
               value: {
                 [key]:
                   +currentTarget.value,
@@ -65,7 +74,7 @@ export const Sound: FC = () => {
         }: TResolverConfig<
           TKey,
           TValue
-        >) => SOUND_RANGE[key],
+        >) => TWEAK_RANGE[key],
       }}
     />
   );

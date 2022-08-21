@@ -1,4 +1,4 @@
-export type TSoundConfig = {
+export type TTweakConfig = {
   decay: number;
   depth: number;
   gain: number;
@@ -7,11 +7,12 @@ export type TSoundConfig = {
   span: number;
 };
 
-export const SOUND_CONFIG: TSoundConfig = {
-  decay: 0.999,
-  delay: 0.0001,
-  gain: 0.4,
-  depth: 1,
-  detune: 0,
-  span: 100,
-};
+export const TWEAK_CONFIG: TTweakConfig =
+  {
+    decay: 0.999,
+    delay: 0.0001,
+    gain: 0.4,
+    depth: 1,
+    detune: 0,
+    span: 100,
+  };

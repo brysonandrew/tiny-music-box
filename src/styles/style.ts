@@ -6,7 +6,7 @@ import {
 } from "./constants";
 
 export const STYLE = {
-  sound: {
+  tweak: {
     style: {
       backgroundColor: GLASS_GREEN,
     },
@@ -21,7 +21,7 @@ export const STYLE = {
       backgroundColor: GLASS_RED,
     },
   },
-  soundExtra: {
+  tweakExtra: {
     style: {
       backgroundColor: GLASS_BLUE,
     },

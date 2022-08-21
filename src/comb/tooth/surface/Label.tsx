@@ -13,7 +13,6 @@ export const Label: FC = () => {
   const { midis } = useContext();
   const { midi } = useToothContext();
   const isActive = midis[midi];
-  console.log(`isActive: ${isActive}`);
   const color = resolveColor(
     isActive,
     midi

@@ -1,14 +1,11 @@
 import { useContext } from "../state/Context";
 import { midiToFreq } from "../utils";
-import type {
-  TInitRef,
-  TRef,
-} from "../init/nodeRecord";
-import { SOUND_CONFIG } from "../comb/tooth/init/sound";
+import { TWEAK_CONFIG } from "../comb/tooth/init/sound";
+import type { TNodeRecord } from "../state/constants/node-record";
 
 export type TPlayConfig = {
   midi: number;
-  ref: TInitRef;
+  ref: TNodeRecord;
 };
 export const usePlay = ({
   midi,
@@ -26,7 +23,7 @@ export const usePlay = ({
         depth,
         detune,
         span,
-      } = SOUND_CONFIG;
+      } = TWEAK_CONFIG;
 
       const bpm = 100;
       const t = context.currentTime;
@@ -44,11 +41,11 @@ export const usePlay = ({
       ref.d.delayTime.value = delay;
       ref.g2.gain.value = decay;
 
-      if (!ref.isOn) {
-        ref.isOn = true;
-        ref.o.start(t);
-      }
-      console.log("on " + ref.isOn);
+      // if (!ref.isOn) {
+      //   ref.isOn = true;
+      //   ref.o.start(t);
+      // }
+      // console.log("on " + ref.isOn);
 
       if (ref.n) {
         ref.n.connect(ref.g2);

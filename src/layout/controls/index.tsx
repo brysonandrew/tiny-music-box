@@ -7,7 +7,7 @@ import { useContext } from "../../state/Context";
 import {
   HEADER_HEIGHT,
   GLASS_BLUE,
-  GLASS_WHITE,
+  GLASS_WHITE_02,
   SIDE_WIDTH,
   GLASS_PURPLE_BORDER,
   GAP,
@@ -35,7 +35,7 @@ const Side = styled(motion.div)`
     ),
     radial-gradient(
       ellipse at bottom,
-      ${GLASS_WHITE},
+      ${GLASS_WHITE_02},
       transparent
     );
   width: ${SIDE_WIDTH}px;

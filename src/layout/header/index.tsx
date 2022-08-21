@@ -1,13 +1,15 @@
 import { motion } from "framer-motion";
 import styled from "@emotion/styled";
 import {
-  columnEnd,
   rowCenter,
   rowGap,
 } from "../../styles/decorators";
 import packageJson from "../../../package.json";
 import type { TMenuKey } from "./config";
-import { MENU_KEYS } from "./config";
+import {
+  MENU_KEYS,
+  ICON,
+} from "./config";
 import { useContext } from "../../state/Context";
 import { nameToTitle } from "../../utils";
 import {
@@ -18,17 +20,23 @@ import {
   GAP,
   GAP_025,
   GAP_05,
-  GLASS_BLUE,
-  GLASS_BORDER,
+  GLASS_GREY,
   GLASS_PURPLE,
+  GLASS_PURPLE_0125,
   GLASS_PURPLE_BORDER,
   GLASS_PURPLE_DARK,
   GLASS_WHITE,
+  GLASS_WHITE_02,
+  GLASS_WHITE_BORDER,
   HEADER_HEIGHT,
 } from "../../styles/constants";
 import { GLASS_CSS } from "../../styles/glass";
-import { centerSelfCss } from "../../styles/position";
-import { useOutsideClick } from "../../utils/useOutsideClick";
+import { css } from "@emotion/react";
+
+const buttonCss = css`
+  padding: ${GAP_025}px ${GAP_05}px;
+  mix-blend-mode: exclusion;
+`;
 
 const Root = styled.header`
   ${GLASS_CSS}
@@ -42,7 +50,7 @@ const Root = styled.header`
     ),
     radial-gradient(
       ellipse at bottom,
-      ${GLASS_WHITE},
+      ${GLASS_WHITE_02},
       transparent
     );
   /* background-color: rgba(
@@ -61,8 +69,17 @@ const Root = styled.header`
   z-index: 1;
 `;
 
-const Title = styled.h1`
-  ${textLgCss};
+const TitleButton = styled(
+  motion.button
+)`
+  ${buttonCss}
+  position: relative;
+`;
+
+const Title = styled(motion.h1)`
+  ${textLgCss}
+  position: relative;
+  z-index: 1;
 `;
 
 const Row = styled(motion.div)`
@@ -84,7 +101,6 @@ const Item = styled(motion.li)`
 
 const Selected = styled(motion.div)`
   ${GLASS_CSS}
-  background-color: ${GLASS_PURPLE_DARK};
   position: absolute;
   left: 0;
   top: 0;
@@ -94,18 +110,52 @@ const Selected = styled(motion.div)`
 
 const Button = styled(motion.button)`
   ${rowGap}
+  ${buttonCss}
   position: relative;
-  padding: ${GAP_025}px ${GAP_05}px;
   z-index: 1;
 `;
 
-const Text = styled(motion.span)`
+const Label = styled(motion.span)`
+  ${rowCenter}
   ${textMdCss}
 `;
 
 export const Header = () => {
-  const { menu, active, dispatch } =
+  const { menu, dispatch } =
     useContext();
+
+  const selected = (
+    <Selected
+      layoutId="Selected"
+      initial={{
+        opacity: 0,
+      }}
+      animate={{
+        opacity: 1,
+        backgroundColor: menu
+          ? GLASS_PURPLE_DARK
+          : GLASS_PURPLE_0125,
+        border: menu
+          ? GLASS_PURPLE_BORDER
+          : GLASS_WHITE_BORDER,
+      }}
+      exit={{
+        opacity: 0,
+      }}
+    />
+  );
+
+  const textConfig = {
+    initial: false,
+    animate: {
+      opacity: 0.6,
+      color: GLASS_WHITE,
+    },
+    whileHover: {
+      opacity: 1,
+      color: GLASS_GREY,
+    },
+  };
 
   return (
     <Root>
@@ -117,40 +167,26 @@ export const Header = () => {
           })
         }
       >
-        <Title className="--title">
-          {nameToTitle(
-            packageJson.name
-          )}
-        </Title>
+        <TitleButton {...textConfig}>
+          <Title className="--title">
+            {nameToTitle(
+              packageJson.name
+            )}
+          </Title>
+          {!menu && selected}
+        </TitleButton>
       </Row>
       <RowList>
         {MENU_KEYS.map(
           (key: TMenuKey) => {
+            const icon = ICON[key];
             const isActive =
-              menu === key;
+              menu === key && icon;
             return (
               <Item key={key}>
-                {isActive && (
-                  <Selected
-                    key={key}
-                    layoutId="Selected"
-                    initial={{
-                      opacity: 0,
-                    }}
-                    animate={{
-                      opacity: 1,
-                    }}
-                    exit={{
-                      opacity: 0,
-                    }}
-                  />
-                )}
+                {isActive && selected}
                 <Button
-                  initial={false}
-                  style={{ opacity: 1 }}
-                  whileHover={{
-                    opacity: 0.8,
-                  }}
+                  {...textConfig}
                   onTap={() =>
                     dispatch({
                       type: "menu",
@@ -160,7 +196,9 @@ export const Header = () => {
                     })
                   }
                 >
-                  <Text>{key}</Text>
+                  <Label>
+                    {icon} {key}
+                  </Label>
                 </Button>
               </Item>
             );

@@ -78,11 +78,11 @@ export const reducer = (
         ready: true,
       };
     }
-    case "sound": {
+    case "tweak": {
       return {
         ...state,
-        sound: {
-          ...state.sound,
+        tweak: {
+          ...state.tweak,
           ...value,
         },
       };

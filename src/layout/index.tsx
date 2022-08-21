@@ -11,7 +11,7 @@ export const Layout = () => (
         duration: 0.4,
       }}
     >
-      <Main />
+      <Main /> 
       <Controls />
     </MotionConfig>
   </Provider>

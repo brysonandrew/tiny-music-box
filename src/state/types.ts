@@ -1,8 +1,13 @@
-import type {  Dispatch,  Reducer,  ReducerState,  ReducerAction,} from "react";
+import type {
+  Dispatch,
+  Reducer,
+  ReducerState,
+  ReducerAction,
+} from "react";
 import type { TMenuKey } from "../layout/header/config";
 import type { INIT_STATE } from "./constants";
 import type { TNodeRecord } from "./constants/node-record";
-import type { TSoundConfig } from "./constants/sound";
+import type { TTweakConfig } from "./constants/tweak";
 import type { TStyleConfig } from "./constants/style";
 
 export type TContext = TState & {
@@ -15,7 +20,7 @@ export type TState = {
   active: Partial<
     Record<TActiveKey, boolean>
   >;
-  sound: TSoundConfig;
+  tweak: TTweakConfig;
   style: TStyleConfig;
   loading: Partial<
     Record<

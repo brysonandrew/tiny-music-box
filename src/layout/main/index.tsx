@@ -4,7 +4,7 @@ import { Comb } from "../../comb";
 import { useContext } from "../../state/Context";
 import {
   GLASS_BLUE,
-  GLASS_WHITE,
+  GLASS_WHITE_02,
   SIDE_WIDTH,
 } from "../../styles/constants";
 import { GLASS_CSS } from "../../styles/glass";
@@ -20,7 +20,7 @@ const Root = styled(motion.div)`
     ),
     radial-gradient(
       ellipse at bottom,
-      ${GLASS_WHITE},
+      ${GLASS_WHITE_02},
       transparent
     );
   position: absolute;
@@ -37,6 +37,7 @@ export const Main = () => {
 
   return (
     <Root
+      layout
       style={{
         left: isSide ? -SIDE_WIDTH : 0,
       }}

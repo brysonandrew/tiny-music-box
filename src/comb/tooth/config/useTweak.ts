@@ -4,8 +4,8 @@ import { useContext as useToothContext } from "../../../state/tooth/Context";
 const DURATION = 1;
 const useOscillator = () => {
   const { o } = useToothContext();
-  const { sound } = useContext();
-  o.detune.value = sound.detune;
+  const { tweak } = useContext();
+  o.detune.value = tweak.detune;
   o.type = "triangle";
 };
 
@@ -13,7 +13,7 @@ const useGain = () => {
   const { g } = useToothContext();
   const {
     context: { currentTime: t },
-    sound: { gain },
+    tweak: { gain },
   } = useContext();
   const e = t + DURATION;
   g.gain.setValueAtTime(gain, t);
@@ -23,7 +23,7 @@ const useGain = () => {
 const useDelay = () => {
   const { d } = useToothContext();
   const {
-    sound: { delay },
+    tweak: { delay },
   } = useContext();
   d.delayTime.value = delay;
 };
@@ -33,7 +33,7 @@ const useNoise = ([t, e]: [
 ]) => {
   const { n } = useToothContext();
   const {
-    sound: { depth },
+    tweak: { depth },
   } = useContext();
   n.parameters
     .get("gain")
@@ -52,7 +52,7 @@ const useKarplusStrong = ([t, e]: [
 ]) => {
   const { w } = useToothContext();
   const {
-    sound: { depth },
+    tweak: { depth },
   } = useContext();
   w.parameters
     .get("gain")
@@ -74,7 +74,7 @@ const useDecay = ([t, e]: [
 ]) => {
   const { g2 } = useToothContext();
   const {
-    sound: { decay },
+    tweak: { decay },
   } = useContext();
   g2.gain.setValueAtTime(decay, t);
   g2.gain.linearRampToValueAtTime(0, e);

@@ -11,10 +11,16 @@ export const GLASS_PURPLE =
   "rgba(98, 0, 234,0.4)";
 export const GLASS_PURPLE_0125 =
   "rgba(98, 0, 234,0.125)";
+export const GLASS_GREY =
+  "rgba(123,123,123,0.8)";
+export const GLASS_WHITE_02 =
+  "rgba(234,234,234,0.2)";
 export const GLASS_WHITE_04 =
   "rgba(234,234,234,0.4)";
 export const GLASS_WHITE =
-  "rgba(234,234,234,0.2)";
+  "rgba(234,234,234,0.8)";
+export const GLASS_WHITE_BORDER =
+  "1px solid rgba(234,234,234,0.8)";
 export const GLASS_PURPLE_DARK =
   "rgba(98,0,234,0.9)";
 export const GLASS_BORDER =

@@ -1,7 +1,7 @@
 import { DETUNE_NORMAL_RANGE } from "../../config";
 import { STYLE } from "../../styles/style";
 
-export const SOUND_CONFIG_KEYS = [
+export const TWEAK_CONFIG_KEYS = [
   "decay",
   "delay",
   "gain",
@@ -10,36 +10,36 @@ export const SOUND_CONFIG_KEYS = [
   "span",
 ] as const;
 
-export type TSoundConfigKey =
-  typeof SOUND_CONFIG_KEYS[number];
+export type TTweakConfigKey =
+  typeof TWEAK_CONFIG_KEYS[number];
 
-export const SOUND_RANGE: Record<
-  TSoundConfigKey,
+export const TWEAK_RANGE: Record<
+  TTweakConfigKey,
   any
 > = {
   decay: {
     min: 0.001,
     max: 0.999,
     step: 0.001,
-    ...STYLE.sound,
+    ...STYLE.tweak,
   }, // delay min="0.001" max="0.02" step="0.001" value="0.005"
   delay: {
     min: 0.0001,
     max: 1,
     step: 0.0001,
-    ...STYLE.sound,
+    ...STYLE.tweak,
   }, // delay min="0.001" max="0.02" step="0.001" value="0.005"
   gain: {
     min: 0.0001,
     max: 2,
     step: 0.001,
-    ...STYLE.sound,
+    ...STYLE.tweak,
   },
   depth: {
     min: 0.001,
     max: 2,
     step: 0.001,
-    ...STYLE.sound,
+    ...STYLE.tweak,
   },
   detune: {
     ...DETUNE_NORMAL_RANGE,
@@ -49,14 +49,14 @@ export const SOUND_RANGE: Record<
     min: 1,
     max: 1000,
     step: 1,
-    ...STYLE.sound,
+    ...STYLE.tweak,
   },
 };
-export type TSoundConfig = Record<
-  TSoundConfigKey,
+export type TTweakConfig = Record<
+  TTweakConfigKey,
   number
 >;
-export const SOUND_CONFIG_DEFAULT: TSoundConfig =
+export const TWEAK_CONFIG_DEFAULT: TTweakConfig =
   {
     decay: 0.999,
     delay: 0.0001,

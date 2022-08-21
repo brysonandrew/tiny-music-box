@@ -1,12 +1,12 @@
 import type { TMenuKey } from "../config";
 
-import { Sound } from "./Sound";
+import { Tweak } from "./Tweak";
 import { Style } from "./Style";
 
 export const RECORD: Record<
   TMenuKey,
   any
 > = {
-  sound: <Sound />,
+  tweak: <Tweak />,
   style: <Style />,
 };
