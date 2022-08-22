@@ -7,6 +7,7 @@ export const GAP_05 = GAP * 0.5;
 
 export const GAP_15 = GAP * 1.5;
 export const GAP_2 = GAP * 2;
+export const GAP_4 = GAP * 4;
 
 export const GLASS_RED =
   "rgba(139, 0, 0,0.28)";
@@ -35,7 +36,7 @@ export const GLASS_RED_3 =
   "rgba(255,61,0, 0.2)";
 export const GLASS_RED_BORDER = `1px solid ${GLASS_RED_3}`;
 export const GLASS_PURPLE =
-  "rgba(98, 0, 234,0.4)";
+  "rgba(98,0,234,0.4)";
 export const GLASS_PURPLE_09 =
   "rgba(98,0,234,0.9)";
 export const GLASS_PURPLE_0125 =

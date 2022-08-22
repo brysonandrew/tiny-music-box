@@ -12,7 +12,7 @@ export const Layout = () => (
       }}
     >
       <Main /> 
-      <Controls />
+      <Controls /> 
     </MotionConfig>
   </Provider>
 );

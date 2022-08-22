@@ -31,6 +31,8 @@ import {
   GLASS_WHITE_BORDER,
   GLASS_BLACK,
   HEADER_HEIGHT,
+  GAP_2,
+  GAP_4,
 } from "../../styles/constants";
 import { GLASS_CSS } from "../../styles/glass";
 import { css } from "@emotion/react";
@@ -43,7 +45,6 @@ const buttonCss = css`
 const Root = styled.header`
   ${GLASS_CSS}
   ${rowGap}
-  border-bottom-left-radius: ${GAP}px;
   background-image: radial-gradient(
       ellipse at top,
       ${GLASS_PURPLE},
@@ -118,8 +119,12 @@ const Label = styled(motion.span)`
     1px -1px 0 ${GLASS_PURPLE},
     -1px 1px 0 ${GLASS_PURPLE},
      1px 1px 0 ${GLASS_PURPLE};
-  /* -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: ${GLASS_BLACK}; */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: ${GLASS_PURPLE_0125};
+  & path {
+    stroke: ${GLASS_PURPLE_09};
+    stroke-width: 2;
+  }
 `;
 
 export const Header = () => {

@@ -19,13 +19,10 @@ import {
   GAP_2,
 } from "../../styles/constants";
 
-export type TAdsrConfig = {
-  attack: number;
-  decay: number;
-  sustain: number;
-  release: number;
-};
-
+export type TAdsrConfig = Record<
+  TAdsrKey,
+  number
+>;
 export const ADSR_CONFIG_DEFAULT: TAdsrConfig =
   {
     attack: 0.1,
@@ -40,6 +37,9 @@ export const ADSR_KEYS = [
   "sustain",
   "release",
 ] as const;
+export type TAdsrKey =
+  typeof ADSR_KEYS[number];
+
 export const SIZE = 120;
 
 const SIZE_0125 = SIZE * 0.125;
@@ -73,15 +73,14 @@ export type TConfig = TComponentProps<
   labelProps: MotionProps &
     LabelHTMLAttributes<HTMLLabelElement>;
 };
-export type TKey =
-  typeof ADSR_KEYS[number];
+
 export const diagonalSize = Math.hypot(
   SIZE,
   SIZE
 );
 export const halfDiagonalSize =
   diagonalSize * 0.5;
-export const INPUT_HEIGHT = 6;
+export const INPUT_HEIGHT = 20;
 
 export const DEFAULT: TConfig = {
   ...NORMAL_SLIDER_RANGE,
@@ -100,7 +99,7 @@ export const DEFAULT: TConfig = {
   },
   itemProps: {},
   labelStyle: {
-    rotateZ: -90
+    rotateZ: -90,
   },
 };
 const ATTACK = {
@@ -117,14 +116,14 @@ const ATTACK = {
     style: {
       width: SIZE,
       height: SIZE_025,
-      x: SIZE_05,
+      x: SIZE_05 + GAP,
       y: SIZE_025,
     },
   },
   labelStyle: {
     ...DEFAULT.labelStyle,
     width: SIZE,
-    x: -SIZE_05,
+    x: -SIZE_06,
     y: 0,
   },
 };
@@ -136,7 +135,7 @@ const DECAY = {
       ...DEFAULT.labelProps.style,
       rotateZ: "45deg",
       width: halfDiagonalSize,
-      x: SIZE_025,
+      x: SIZE_02,
       y: SIZE_0125,
     },
   },
@@ -159,7 +158,7 @@ const SUSTAIN = {
   ...DEFAULT,
   style: {
     width: SIZE,
-    height: 4,
+    height: INPUT_HEIGHT,
   },
   labelProps: {
     ...DEFAULT.labelProps,
@@ -198,8 +197,8 @@ const RELEASE = {
   itemProps: {
     style: {
       width: SIZE_05,
+      x: SIZE_2 + GAP_15,
       y: SIZE_05,
-      x: SIZE_2 + GAP_2,
     },
   },
   labelStyle: {
@@ -208,10 +207,12 @@ const RELEASE = {
     y: 0,
   },
 };
-export const ADSR_CONFIG: Record<
-  TKey,
+
+export type TAdsrStyle = Record<
+  TAdsrKey,
   TConfig
-> = {
+>;
+export const ADSR_STYLE: TAdsrStyle = {
   attack: ATTACK,
   decay: DECAY,
   sustain: SUSTAIN,

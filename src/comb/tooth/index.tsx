@@ -3,6 +3,7 @@ import { useContext } from "../../state/Context";
 import { Provider as ProviderTooth } from "../../state/tooth/Provider";
 import { useNodeRecord } from "./config/useNodeRecord";
 import { Connect } from "./connect";
+import { Adsr } from "./connect/adsr";
 import { Tweak } from "./connect/tweak";
 import { Surface } from "./surface";
 
@@ -24,6 +25,7 @@ export const Tooth: FC<TProps> = ({
     >
       <Connect>
         <Tweak />
+        <Adsr />
       </Connect>
       <Surface />
     </ProviderTooth>

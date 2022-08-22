@@ -1,7 +1,10 @@
 import { motion } from "framer-motion";
 import styled from "@emotion/styled";
 import { Comb } from "../../comb";
-import { useContext } from "../../state/Context";
+import {
+  Context,
+  useContext,
+} from "../../state/Context";
 import {
   GLASS_BLUE,
   GLASS_WHITE_02,
@@ -10,6 +13,7 @@ import {
 import { GLASS_CSS } from "../../styles/glass";
 import { Canvas } from "@react-three/fiber";
 import { Provider } from "../../state/Provider";
+import { useContextBridge } from "@react-three/drei";
 
 const Root = styled(motion.div)`
   ${GLASS_CSS}
@@ -32,8 +36,9 @@ const Root = styled(motion.div)`
 
 export const Main = () => {
   const { menu } = useContext();
-
   const isSide = Boolean(menu);
+  const ContextBridge =
+    useContextBridge(Context);
 
   return (
     <Root
@@ -43,9 +48,9 @@ export const Main = () => {
       }}
     >
       <Canvas>
-        <Provider>
+        <ContextBridge>
           <Comb />
-        </Provider>
+        </ContextBridge>
       </Canvas>
     </Root>
   );

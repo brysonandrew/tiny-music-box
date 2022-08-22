@@ -2,7 +2,7 @@ import type { TMenuKey } from "../config";
 
 import { Tweak } from "./Tweak";
 import { Style } from "./Style";
-import { Adsr } from "./Adsr";
+import { Adsr } from "./adsr";
 
 export const RECORD: Record<
   TMenuKey,

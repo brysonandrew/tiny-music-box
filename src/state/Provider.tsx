@@ -18,18 +18,24 @@ import { useLocalStorage } from "../storage";
 import type {
   TState,
   TReducer,
+  TContext,
 } from "./types";
 
 type TProviderProps = {
+  value?: TContext;
   children: JSX.Element | JSX.Element[];
 };
 export const Provider: FC<
   TProviderProps
-> = ({ children }) => {
+> = ({ children, value }) => {
+  const initState: TState = {
+    ...INIT_STATE,
+    ...(value || {}),
+  };
   const [savedState, setSavedState] =
     useLocalStorage<TState>(
       _STATE_STORAGE_KEY,
-      INIT_STATE
+      initState
     );
 
   const [state, dispatch] = useReducer<
@@ -48,10 +54,10 @@ export const Provider: FC<
       });
       return nextState;
     },
-    INIT_STATE,
+    initState,
     (state) =>
       resolveHydrationState(
-        state,
+        { ...state },
         savedState
       )
   );
@@ -60,7 +66,7 @@ export const Provider: FC<
     dispatch({
       type: "ready",
       value: resolvePostHydrationState(
-        state,
+        { ...state },
         savedState
       ),
     })
@@ -69,16 +75,17 @@ export const Provider: FC<
   useEffect(() => {
     readyRef.current();
   }, []);
-  
+
   const init = {
+    ...initState,
     ...state,
+    // ...(value || {}),
     dispatch,
   };
-  
+  console.log(init);
+
   return (
-    <Context.Provider
-      value={init}
-    >
+    <Context.Provider value={init}>
       {children}
     </Context.Provider>
   );

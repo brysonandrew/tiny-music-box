@@ -1,5 +1,5 @@
 import { Clockwork } from "../../icons/Clockwork";
-import { PaintRoller } from "../../icons/PaintRoller";
+import { Palette } from "../../icons/Palette";
 import { SwissArmyKnife } from "../../icons/SwissArmyKnife";
 
 export const MENU_KEYS = [
@@ -16,5 +16,5 @@ export const ICON: Record<
 > = {
   adsr: <Clockwork />,
   tweak: <SwissArmyKnife />,
-  style: <PaintRoller />,
+  style: <Palette />,
 };

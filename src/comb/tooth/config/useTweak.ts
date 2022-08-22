@@ -1,27 +1,11 @@
 import { useContext } from "../../../state/Context";
 import { useContext as useToothContext } from "../../../state/tooth/Context";
 
-const DURATION = 1;
-
 const useOscillator = () => {
   const { o } = useToothContext();
   const { tweak } = useContext();
   o.detune.value = tweak.detune;
   o.type = "triangle";
-};
-
-const useGain = () => {
-  const { g } = useToothContext();
-  const {
-    context: { currentTime: t },
-    tweak: { gain },
-  } = useContext();
-  const e = t + DURATION;
-  g.gain.linearRampToValueAtTime(
-    gain,
-    t
-  );
-  g.gain.linearRampToValueAtTime(0, e);
 };
 
 const useDelay = () => {
@@ -86,8 +70,6 @@ const useDecay = ([t, e]: [
 
 export const useTweak = () => {
   useOscillator();
-  useGain();
-
   // useNoise([t, e]);
   // useDelay();
   // useKarplusStrong([t, e]);
