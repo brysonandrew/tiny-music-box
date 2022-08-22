@@ -25,6 +25,7 @@ export type TAdsrConfig = Record<
 >;
 export const ADSR_CONFIG_DEFAULT: TAdsrConfig =
   {
+    gain: 0.5,
     attack: 0.1,
     decay: 0.1,
     sustain: 0.1,
@@ -32,6 +33,8 @@ export const ADSR_CONFIG_DEFAULT: TAdsrConfig =
   };
 
 export const ADSR_KEYS = [
+  "gain",
+
   "attack",
   "decay",
   "sustain",
@@ -100,6 +103,38 @@ export const DEFAULT: TConfig = {
   itemProps: {},
   labelStyle: {
     rotateZ: -90,
+  },
+};
+const GAIN = {
+  ...DEFAULT,
+  style: {
+    height: INPUT_HEIGHT,
+    width: "100%",
+  },
+  labelProps: {
+    ...DEFAULT.labelProps,
+    style: {
+      ...DEFAULT.labelProps.style,
+      width: SIZE_15,
+      height: INPUT_HEIGHT * 2,
+      rotateZ: "-90deg",
+      y: -SIZE_05,
+      x: -SIZE_0125
+    },
+  },
+  itemProps: {
+    style: {
+      width: SIZE,
+      height: SIZE,
+      x: SIZE_05 + GAP,
+      y: SIZE_025,
+    },
+  },
+  labelStyle: {
+    ...DEFAULT.labelStyle,
+    width: SIZE,
+    x: -SIZE_0375,
+    y: SIZE_025,
   },
 };
 const ATTACK = {
@@ -213,6 +248,7 @@ export type TAdsrStyle = Record<
   TConfig
 >;
 export const ADSR_STYLE: TAdsrStyle = {
+  gain: GAIN,
   attack: ATTACK,
   decay: DECAY,
   sustain: SUSTAIN,

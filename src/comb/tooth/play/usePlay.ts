@@ -5,6 +5,7 @@ import { useContext } from "../../../state/Context";
 import { useContext as useToothContext } from "../../../state/tooth/Context";
 import { midiToFreq } from "../../../utils";
 const STOP_BUFFER = 0.02; //tweak this if clicks are heard when stopping oscillator
+const GAIN_MULTIPLIER = 2; //tweak this to go outside of 0 - 100%
 
 export const usePlay = () => {
   // HOOKS
@@ -16,8 +17,9 @@ export const usePlay = () => {
   const {
     context,
     merger,
-    tweak: { gain, delay },
+    tweak: { delay },
     adsr: {
+      gain,
       attack,
       decay,
       sustain,
@@ -57,7 +59,7 @@ export const usePlay = () => {
   const a = attack;
   const start = t + a;
   g.gain.linearRampToValueAtTime(
-    gain,
+    gain * GAIN_MULTIPLIER,
     start
   );
   //~

@@ -24,6 +24,7 @@ export const resolveHydrationState = (
     initMidis: INIT_STATE.initMidis,
   };
 };
+
 export const resolvePostHydrationState =
   (
     state: TState,

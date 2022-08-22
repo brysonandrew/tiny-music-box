@@ -8,7 +8,7 @@ import {
   ADSR_WIDTH,
   ADSR_KEYS,
 } from "../../../../state/constants/adsr";
-import { HEADER_HEIGHT } from "../../../../styles/constants";
+import { GAP, HEADER_HEIGHT } from "../../../../styles/constants";
 import { rowCenter } from "../../../../styles/decorators";
 import { Item } from "./Item";
 
@@ -25,7 +25,7 @@ const Root = styled.div`
 const List = styled(motion.ul)`
   ${rowCenter}
   position: relative;
-  top: ${WIDTH * 0.25}px;
+  top: ${HEADER_HEIGHT + GAP}px;
   left: ${HEIGHT * 0.25}px;
 `;
 
