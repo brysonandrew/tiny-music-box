@@ -12,14 +12,8 @@ export const _STATE_STORAGE_KEY =
   "_STATE_STORAGE_KEY";
  
 const context = new AudioContext();
-const merger = new ChannelMergerNode(
-  context,
-  { numberOfInputs: TOTAL_KEYS  } as ChannelMergerOptions
-);
-merger.connect(context.destination);
 
 export const INIT_STATE: TState = {
-  merger,
   context,
   adsr: ADSR_CONFIG_DEFAULT,
   tweak: TWEAK_CONFIG_DEFAULT,

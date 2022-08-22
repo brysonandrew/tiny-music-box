@@ -1,15 +1,15 @@
 import type { FC } from "react";
 import { motion } from "framer-motion";
 import styled from "@emotion/styled";
-import { useContext } from "../../../../state/Context";
-import type { TAdsrKey } from "../../../../state/constants/adsr";
+import { useContext } from "../../../../../state/Context";
+import type { TAdsrKey } from "../../../../../state/constants/adsr";
 import {
   ADSR_HEIGHT,
   ADSR_WIDTH,
   ADSR_KEYS,
-} from "../../../../state/constants/adsr";
-import { GAP, HEADER_HEIGHT } from "../../../../styles/constants";
-import { rowCenter } from "../../../../styles/decorators";
+} from "../../../../../state/constants/adsr";
+import { GAP, HEADER_HEIGHT } from "../../../../../styles/constants";
+import { rowCenter } from "../../../../../styles/decorators";
 import { Item } from "./Item";
 
 const WIDTH = ADSR_WIDTH;

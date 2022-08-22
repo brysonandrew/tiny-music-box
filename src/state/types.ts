@@ -16,7 +16,6 @@ export type TContext = TState & {
 };
 
 export type TState = {
-  merger: ChannelMergerNode;
   context: AudioContext;
   menu: TMenuKey | null;
   active: Partial<

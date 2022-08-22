@@ -11,7 +11,7 @@ type TProps = {
 export const Tooth: FC<TProps> = ({
   midi,
 }) => {
-  const { initMidis, midis } =
+  const { initMidis, midis, lastMidi } =
     useContext();
   useNodeRecord(midi);
   const nodeRecord = initMidis[midi];
@@ -22,7 +22,13 @@ export const Tooth: FC<TProps> = ({
       midi={midi}
       nodeRecord={nodeRecord}
     >
-      <>{midis[midi] && <Play />}</>
+      <>
+        {midis[midi] &&
+          (lastMidi === null ||
+            midi === lastMidi) && (
+            <Play />
+          )}
+      </>
       <Surface />
     </ProviderTooth>
   );

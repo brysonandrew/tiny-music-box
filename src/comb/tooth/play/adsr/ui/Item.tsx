@@ -4,16 +4,16 @@ import type {
 } from "react";
 import { motion } from "framer-motion";
 import styled from "@emotion/styled";
-import { useContext } from "../../../../state/Context";
-import type { TAdsrKey } from "../../../../state/constants/adsr";
-import { ADSR_STYLE } from "../../../../state/constants/adsr";
-import { Slider } from "../../../../slider";
+import { Slider } from "../../../../../slider";
+import type { TAdsrKey } from "../../../../../state/constants/adsr";
+import { ADSR_STYLE } from "../../../../../state/constants/adsr";
 import {
-  GAP,
   GAP_05,
-} from "../../../../styles/constants";
-import { rowGap } from "../../../../styles/decorators";
-import { textSmCss } from "../../../../styles/text";
+  GAP,
+} from "../../../../../styles/constants";
+import { rowGap } from "../../../../../styles/decorators";
+import { textSmCss } from "../../../../../styles/text";
+import { useContext } from "../../../../../state/Context";
 
 const Root = styled(motion.li)`
   position: relative;

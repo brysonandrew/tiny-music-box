@@ -2,17 +2,17 @@ import type {
   FC,
   SyntheticEvent,
 } from "react";
-import type { TTweakConfigKey } from "../../../state/constants/tweak";
+import type { TTweakConfigKey } from "../../../../state/constants/tweak";
 import {
   TWEAK_CONFIG_DEFAULT,
   TWEAK_RANGE,
-} from "../../../state/constants/tweak";
+} from "../../../../state/constants/tweak";
 import type {
   TResolverConfig,
   TKeyValuePair,
-} from "../../../slider/list";
-import { SliderList } from "../../../slider/list";
-import { useContext } from "../../../state/Context";
+} from "../../../../slider/list";
+import { SliderList } from "../../../../slider/list";
+import { useContext } from "../../../../state/Context";
 
 type TKey = TTweakConfigKey;
 type TValue = number;
