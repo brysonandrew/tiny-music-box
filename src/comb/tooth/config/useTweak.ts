@@ -1,8 +1,9 @@
 import { useContext } from "../../../state/Context";
 import { useContext as useToothContext } from "../../../state/tooth/Context";
 
-const useOscillator = () => {
-  const { o } = useToothContext();
+const useOscillator = (
+  o: OscillatorNode
+) => {
   const { tweak } = useContext();
   o.detune.value = tweak.detune;
   o.type = "triangle";

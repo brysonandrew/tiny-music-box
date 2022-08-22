@@ -41,7 +41,6 @@ export const Comb = () => {
     },
     isActive: true,
   });
-  useActiveMidisLog(midis);
   return (
     <>
       <Ambient />

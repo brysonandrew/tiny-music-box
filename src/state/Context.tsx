@@ -5,7 +5,7 @@ import {
 import type { Context as ReactContext } from "react";
 import type {
   TAction,
-  TContext,
+  TContext, 
 } from "./types";
 import { INIT_STATE } from "./constants";
 

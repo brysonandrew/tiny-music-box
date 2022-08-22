@@ -1,9 +1,6 @@
 export type TNodeRecord = {
-  o: OscillatorNode;
-
   d: DelayNode;
 
-  g: GainNode;
   g2: GainNode;
   g3: GainNode;
 

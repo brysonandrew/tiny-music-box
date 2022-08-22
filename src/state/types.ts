@@ -16,6 +16,7 @@ export type TContext = TState & {
 };
 
 export type TState = {
+  merger: ChannelMergerNode;
   context: AudioContext;
   menu: TMenuKey | null;
   active: Partial<
@@ -32,6 +33,7 @@ export type TState = {
   >;
   ready: boolean;
   midis: boolean[];
+  lastMidi: number | null;
   initMidis: (null | TNodeRecord)[];
 };
 

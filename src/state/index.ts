@@ -20,6 +20,7 @@ export const resolveHydrationState = (
     ...state,
     ...appState,
     context: INIT_STATE.context,
+    merger: INIT_STATE.merger,
     initMidis: INIT_STATE.initMidis,
   };
 };
@@ -39,6 +40,7 @@ export const resolvePostHydrationState =
       ...state,
       ...appState,
       context: INIT_STATE.context,
+      merger: INIT_STATE.merger,
       initMidis: INIT_STATE.initMidis,
       ready: true,
     };
@@ -113,9 +115,12 @@ export const reducer = (
             ? next
             : isMidi
       );
-      return { ...state, midis };
+      return {
+        ...state,
+        midis,
+        lastMidi: target
+      };
     }
-
     case "initMidis": {
       const v: TInitMidiValue = value;
       const initMidis =

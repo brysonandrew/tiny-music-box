@@ -2,9 +2,8 @@ import type { FC } from "react";
 import { useContext } from "../../state/Context";
 import { Provider as ProviderTooth } from "../../state/tooth/Provider";
 import { useNodeRecord } from "./config/useNodeRecord";
-import { Adsr } from "./adsr";
+import { Play } from "./play";
 import { Surface } from "./surface";
-import { Tweak } from "./tweak";
 
 type TProps = {
   midi: number;
@@ -23,14 +22,7 @@ export const Tooth: FC<TProps> = ({
       midi={midi}
       nodeRecord={nodeRecord}
     >
-      <>
-        {midis[midi] && (
-          <>
-            <Tweak />
-            <Adsr />
-          </>
-        )}
-      </>
+      <>{midis[midi] && <Play />}</>
       <Surface />
     </ProviderTooth>
   );
