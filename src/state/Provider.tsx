@@ -79,10 +79,9 @@ export const Provider: FC<
   const init = {
     ...initState,
     ...state,
-    // ...(value || {}),
+    ...(value || {}),
     dispatch,
   };
-  console.log(init);
 
   return (
     <Context.Provider value={init}>

@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { useTweak } from "../../config/useTweak";
+import { useTweak } from "../config/useTweak";
 
 export type TTweakProps = {
   children?: JSX.Element;

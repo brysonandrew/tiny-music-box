@@ -69,7 +69,7 @@ const useDecay = ([t, e]: [
 };
 
 export const useTweak = () => {
-  useOscillator();
+  // useOscillator();
   // useNoise([t, e]);
   // useDelay();
   // useKarplusStrong([t, e]);

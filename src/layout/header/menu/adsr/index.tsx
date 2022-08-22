@@ -8,16 +8,8 @@ import {
   ADSR_WIDTH,
   ADSR_KEYS,
 } from "../../../../state/constants/adsr";
-import {
-  GAP,
-  GAP_05,
-  HEADER_HEIGHT,
-} from "../../../../styles/constants";
-import {
-  rowCenter,
-  rowGap,
-} from "../../../../styles/decorators";
-import { textSmCss } from "../../../../styles/text";
+import { HEADER_HEIGHT } from "../../../../styles/constants";
+import { rowCenter } from "../../../../styles/decorators";
 import { Item } from "./Item";
 
 const WIDTH = ADSR_WIDTH;

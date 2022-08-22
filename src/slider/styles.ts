@@ -1,13 +1,8 @@
+import { motion } from "framer-motion";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { motion } from "framer-motion";
 import { metalRadialCss } from "../styles/metal";
-import {
-  GLASS_BLACK,
-  GLASS_PURPLE,
-  GLASS_PURPLE_09,
-  GLASS_WHITE_04,
-} from "../styles/constants";
+import { GLASS_PURPLE_09 } from "../styles/constants";
 const THUMB_SIZE = 20;
 
 const thumbCss = css`

@@ -1,11 +1,17 @@
+import { useRef } from "react";
 import { useContext } from "../../../state/Context";
 import { useContext as useToothContext } from "../../../state/tooth/Context";
+import { midiToFreq } from "../../../utils";
 
 const MAX = 4;
-const useGain = () => {
-  const { g } = useToothContext();
+export const useAdsr = () => {
+  const countRef = useRef<
+    number | null
+  >(null);
+  const { dispatch } = useContext();
+  const { g, midi } = useToothContext();
   const {
-    context: { currentTime: t },
+    context,
     tweak: { gain },
     adsr: {
       attack,
@@ -14,18 +20,31 @@ const useGain = () => {
       release,
     },
   } = useContext();
-  console.log(
-    attack,
-    decay,
-    sustain,
-    release
+  if (countRef.current === null) {
+    g.connect(context.destination);
+    countRef.current = 0;
+  }
+  if (countRef.current !== 0)
+    return null;
+  countRef.current++;
+  const t = context.currentTime;
+
+  const o = context.createOscillator();
+  const frequency = midiToFreq(midi);
+  o.frequency.setValueAtTime(
+    frequency,
+    t
   );
+  o.connect(g);
+  o.start(t);
+
   const adsr =
     attack + decay + sustain + release;
+
   const step = 1 / MAX;
 
   if (adsr > 0) {
-    g.gain.cancelScheduledValues(t);
+    //g.gain.cancelScheduledValues(t);
     const next = t + step;
 
     const a = attack;
@@ -48,12 +67,17 @@ const useGain = () => {
     );
     const end = next + adsr * step;
     g.gain.linearRampToValueAtTime(
-      0.0,
+      0,
       end
     );
   }
-};
-
-export const useAdsr = () => {
-  useGain();
+  console.log(countRef.current);
+  o.stop(t + adsr);
+  o.onended = () => {
+    countRef.current = 0;
+    dispatch({
+      type: "midis",
+      value: [midi, false],
+    });
+  };
 };

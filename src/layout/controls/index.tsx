@@ -47,7 +47,7 @@ const Side = styled(motion.div)`
 export const Controls = () => {
   const { menu } = useContext();
   return (
-    <Root> 
+    <Root>
       <Header />
       <AnimatePresence mode="popLayout">
         {menu && (
@@ -56,7 +56,7 @@ export const Controls = () => {
             style={{ y: 0 }}
             key={menu}
             initial={{ x: "100%" }}
-            animate={{ x: 0 }} 
+            animate={{ x: 0 }}
             exit={{ x: "100%" }}
           >
             {RECORD[menu]}

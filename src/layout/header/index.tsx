@@ -39,7 +39,6 @@ import { css } from "@emotion/react";
 
 const buttonCss = css`
   padding: ${GAP_025}px ${GAP_05}px;
-  /* mix-blend-mode: exclusion; */
 `;
 
 const Root = styled.header`

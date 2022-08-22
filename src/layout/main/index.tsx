@@ -12,7 +12,6 @@ import {
 } from "../../styles/constants";
 import { GLASS_CSS } from "../../styles/glass";
 import { Canvas } from "@react-three/fiber";
-import { Provider } from "../../state/Provider";
 import { useContextBridge } from "@react-three/drei";
 
 const Root = styled(motion.div)`

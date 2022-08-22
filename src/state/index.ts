@@ -106,10 +106,11 @@ export const reducer = (
       };
     }
     case "midis": {
+      const [target, next] = value;
       const midis = state.midis.map(
         (isMidi, midi) =>
-          midi === value
-            ? !state.midis[midi]
+          midi === target
+            ? next
             : isMidi
       );
       return { ...state, midis };

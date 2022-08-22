@@ -23,14 +23,13 @@ export const Comb = () => {
       typeof numberKey === "number" &&
       !isNaN(numberKey)
     ) {
-      const value =
-        numberKey + FROM_KEY;
+      const midi = numberKey + FROM_KEY;
       console.log(`NEXT MIDI:
-      ${value}`);
+      ${midi}`);
 
       dispatch({
         type: "midis",
-        value,
+        value: [midi, true],
       });
     }
   };

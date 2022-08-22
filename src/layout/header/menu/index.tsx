@@ -11,4 +11,4 @@ export const RECORD: Record<
   tweak: <Tweak />,
   adsr: <Adsr />,
   style: <Style />,
-};
+}; 
