@@ -7,11 +7,9 @@ import {
 import { useKey } from "../handlers";
 import { useContext } from "../state/Context";
 import { Ambient } from "./ambient";
-import { useActiveMidisLog } from "../utils/log/useActiveMidisLog";
 
 export const Comb = () => {
-  const { midis, dispatch } =
-    useContext();
+  const { dispatch } = useContext();
 
   const handleKey = ({
     key,
@@ -41,6 +39,7 @@ export const Comb = () => {
     },
     isActive: true,
   });
+  
   return (
     <>
       <Ambient />

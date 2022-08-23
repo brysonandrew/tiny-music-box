@@ -1,12 +1,11 @@
-export type TNodeRecord = {
-  d: DelayNode;
+import type { TEffectRecord } from "../../comb/tooth/play/tweak/ui/effects/type";
 
-  g2: GainNode;
-  g3: GainNode;
-
-  w: AudioWorkletNode;
-  n: AudioWorkletNode;
-};
+export type TNodeRecord =
+  TEffectRecord & {
+    d: DelayNode;
+    g2: GainNode;
+    g3: GainNode;
+  };
 
 export type TNodeRecordInit =
   TNodeRecord | null;

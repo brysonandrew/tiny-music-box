@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { useTweak } from "../config/useTweak";
+import { useTweak } from "../play/tweak/useNoise";
 
 export type TTweakProps = {
   children?: JSX.Element;

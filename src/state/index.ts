@@ -53,6 +53,12 @@ export const reducer = (
     case "state": {
       return { ...state, ...value };
     }
+    case "x": {
+      return {
+        ...state,
+        x: value,
+      };
+    }
     case "loading": {
       return {
         ...state,
@@ -101,6 +107,39 @@ export const reducer = (
       return {
         ...state,
         wave: value,
+      };
+    }
+    case "effect": {
+      return {
+        ...state,
+        effect: value,
+      };
+    }
+    case "moog": {
+      return {
+        ...state,
+        moog: {
+          ...state.moog,
+          ...value,
+        },
+      };
+    }
+    case "bitcrusher": {
+      return {
+        ...state,
+        bitcrusher: {
+          ...state.bitcrusher,
+          ...value,
+        },
+      };
+    }
+    case "lowpass": {
+      return {
+        ...state,
+        lowpass: {
+          ...state.lowpass,
+          ...value,
+        },
       };
     }
     case "style": {

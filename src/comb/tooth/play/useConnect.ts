@@ -7,12 +7,9 @@ export type TConnectReturn = {
   g: GainNode;
 };
 export const useConnect = () => {
-  const {
-    context,
-    tweak: { delay },
-  } = useContext();
+  const { context } = useContext();
   const { currentTime: t } = context;
-  const { midi, d } = useToothContext();
+  const { midi } = useToothContext();
   const o = context.createOscillator();
   const frequency = midiToFreq(midi);
   o.frequency.setValueAtTime(
@@ -20,8 +17,8 @@ export const useConnect = () => {
     t
   );
   const g = context.createGain();
-  o.connect(g);
   o.start(t);
+  o.connect(g);
   g.gain.setValueAtTime(0, t);
   g.connect(context.destination);
 

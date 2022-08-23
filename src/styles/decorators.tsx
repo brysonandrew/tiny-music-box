@@ -1,9 +1,11 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
+import { motion } from "framer-motion";
 import {
   GAP,
   GAP_05,
   GLASS_GREY,
+  GLASS_PURPLE_09,
   GLASS_WHITE,
   ICON_SIZE,
 } from "./constants";
@@ -85,3 +87,12 @@ export const SELECT_TEXT = {
     color: GLASS_GREY,
   },
 };
+
+export const breakCss = css`
+  margin: ${GAP_05}px 0 ${GAP}px;
+  height: 1px;
+  background-color: ${GLASS_PURPLE_09};
+`;
+export const Break = styled(motion.div)`
+  ${breakCss}
+`;

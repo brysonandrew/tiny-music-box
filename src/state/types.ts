@@ -10,13 +10,20 @@ import type { TNodeRecord } from "./constants/node-record";
 import type { TTweakConfig } from "./constants/tweak";
 import type { TStyleConfig } from "./constants/style";
 import type { TAdsrConfig } from "./constants/adsr";
+import type { TMoogConfig } from "./constants/moog";
+import type { TLowpassConfig } from "./constants/lowpass";
+import type { TBitcrusherConfig } from "./constants/bitcrusher";
+import type { TBaseWaveKey } from "../comb/tooth/play/tweak/ui/wave/type";
+import type { TEffectKey } from "../comb/tooth/play/tweak/ui/effects/type";
 
 export type TContext = TState & {
   dispatch: TDispatch;
 };
 
 export type TState = {
-  wave: "sine",
+  x: number;
+  wave: TBaseWaveKey;
+  effect: TEffectKey;
   context: AudioContext;
   menu: TMenuKey | null;
   active: Partial<
@@ -24,6 +31,9 @@ export type TState = {
   >;
   adsr: TAdsrConfig;
   tweak: TTweakConfig;
+  moog: TMoogConfig;
+  lowpass: TLowpassConfig;
+  bitcrusher: TBitcrusherConfig;
   style: TStyleConfig;
   loading: Partial<
     Record<

@@ -9,6 +9,7 @@ import {
 } from "../../styles/decorators";
 import {
   textMdCss,
+  textSmCss,
   textXsCss,
 } from "../../styles/text";
 import type { TRequireAtLeastOne } from "../../types";
@@ -45,14 +46,14 @@ const itemCss = css`
   padding: 8px;
 `;
 const Title = styled.h4`
-  ${textMdCss}
+  ${textSmCss}
   ${itemCss}
 `;
 
 const Value = styled.h4`
   ${rowCenter}
   ${itemCss}
-  ${textXsCss}
+  ${textSmCss}
 `;
 export type TListConfig = {
   id: string;
@@ -121,7 +122,7 @@ export const SliderList = <
       >) => (
         <Item key={key}>
           <Row>
-            <Title className="--title">
+            <Title className="--value">
               {label.title({
                 key,
                 value,

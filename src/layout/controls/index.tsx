@@ -16,6 +16,7 @@ import { columnStartEnd } from "../../styles/decorators";
 import { GLASS_CSS } from "../../styles/glass";
 import { Header } from "../header";
 import { RECORD } from "../header/menu";
+import { Handle } from "./Handle";
 
 const Root = styled.div`
   ${columnStartEnd}
@@ -50,7 +51,7 @@ export const Controls = () => {
     <Root>
       <Header />
       <AnimatePresence mode="popLayout">
-        {menu && (
+        {menu && ( 
           <Side
             layout="position"
             style={{ y: 0 }}
@@ -63,6 +64,7 @@ export const Controls = () => {
           </Side>
         )}
       </AnimatePresence>
+      {/* <Handle /> */}
     </Root>
   );
 };

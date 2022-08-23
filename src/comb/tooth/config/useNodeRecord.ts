@@ -4,6 +4,12 @@ import {
 } from "react";
 import { useContext } from "../../../state/Context";
 import type { TInitMidiValue } from "../../../state/types";
+import type {
+  TEffectKey,
+  TEffectRecord,
+} from "../play/tweak/ui/effects/type";
+import { EFFECTS } from "../play/tweak/ui/effects/type";
+import { WORKLETS } from "./type";
 
 export const useNodeRecord = (
   midi: number
@@ -18,26 +24,31 @@ export const useNodeRecord = (
 
   useEffect(() => {
     const init = async () => {
-      await context.audioWorklet.addModule(
-        "worklets/karplus-strong.js"
-      );
-      await context.audioWorklet.addModule(
-        "worklets/noise-white.js"
-      );
-
+      for (const name of EFFECTS) {
+        await context.audioWorklet.addModule(
+          `worklets/${name}.js`
+        );
+      }
       const value: TInitMidiValue = {
         midi,
         nodeRecord: {
           d: context.createDelay(),
           g2: context.createGain(),
           g3: context.createGain(),
-          n: new AudioWorkletNode(
-            context,
-            "noise-white"
-          ),
-          w: new AudioWorkletNode(
-            context,
-            "karplus-strong"
+          ...EFFECTS.reduce<TEffectRecord>(
+            (
+              a: TEffectRecord,
+              c: TEffectKey
+            ) => {
+              const next =
+                new AudioWorkletNode(
+                  context,
+                  c
+                );
+              a[c] = next;
+              return a;
+            },
+            {} as TEffectRecord
           ),
         },
       };
@@ -45,7 +56,7 @@ export const useNodeRecord = (
         type: "initMidis",
         value,
       });
-      
+
       refCount.current++;
     };
 

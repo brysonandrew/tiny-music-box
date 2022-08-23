@@ -130,7 +130,6 @@ const Label = styled(motion.span)`
 export const Header = () => {
   const { menu, dispatch } =
     useContext();
-
   const selected = (
     <Selected
       layoutId="Selected"
