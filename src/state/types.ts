@@ -16,6 +16,7 @@ export type TContext = TState & {
 };
 
 export type TState = {
+  wave: "sine",
   context: AudioContext;
   menu: TMenuKey | null;
   active: Partial<

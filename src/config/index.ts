@@ -37,7 +37,7 @@ export const DETUNE_NORMAL_RANGE = {
   step: 0.00083333333, // 1/1200
 };
 
-export const FROM_KEY = 40;
+export const FROM_KEY = 60;
 export const TOTAL_KEYS = 12;
 
 export const MIDI_KEYS: number[] =

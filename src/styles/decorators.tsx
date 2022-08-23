@@ -1,5 +1,12 @@
 import { css } from "@emotion/react";
-import { ICON_SIZE } from "./constants";
+import styled from "@emotion/styled";
+import {
+  GAP,
+  GAP_05,
+  GLASS_GREY,
+  GLASS_WHITE,
+  ICON_SIZE,
+} from "./constants";
 
 export const rowCenter = css`
   display: flex;
@@ -17,6 +24,12 @@ export const rowGap = css`
   display: flex;
   align-items: center;
   justify-content: space-between;
+`;
+
+export const rowEven = css`
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 `;
 
 export const columnCenter = css`
@@ -44,3 +57,31 @@ export const columnStartEnd = css`
   justify-content: flex-start;
   flex-direction: column;
 `;
+
+export const spaceCss = css`
+  padding: ${GAP}px;
+`;
+
+export const Space = styled.div`
+  ${spaceCss}
+`;
+
+export const halfSpaceCss = css`
+  padding: ${GAP_05}px;
+`;
+
+export const HalfSpace = styled.div`
+  ${halfSpaceCss}
+`;
+
+export const SELECT_TEXT = {
+  initial: false,
+  animate: {
+    opacity: 0.6,
+    color: GLASS_WHITE,
+  },
+  whileHover: {
+    opacity: 1,
+    color: GLASS_GREY,
+  },
+};

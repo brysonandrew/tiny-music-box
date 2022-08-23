@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import {
   rowCenter,
   rowGap,
+  SELECT_TEXT,
 } from "../../styles/decorators";
 import packageJson from "../../../package.json";
 import type { TMenuKey } from "./config";
@@ -151,18 +152,6 @@ export const Header = () => {
     />
   );
 
-  const textConfig = {
-    initial: false,
-    animate: {
-      opacity: 0.6,
-      color: GLASS_WHITE,
-    },
-    whileHover: {
-      opacity: 1,
-      color: GLASS_GREY,
-    },
-  };
-
   return (
     <Root>
       <Row
@@ -173,7 +162,7 @@ export const Header = () => {
           })
         }
       >
-        <TitleButton {...textConfig}>
+        <TitleButton {...SELECT_TEXT}>
           <Title className="--title">
             {nameToTitle(
               packageJson.name
@@ -192,7 +181,7 @@ export const Header = () => {
               <Item key={key}>
                 {isActive && selected}
                 <Button
-                  {...textConfig}
+                  {...SELECT_TEXT}
                   onTap={() =>
                     dispatch({
                       type: "menu",

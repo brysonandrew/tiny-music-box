@@ -8,22 +8,22 @@ import {
 export const STYLE = {
   tweak: {
     style: {
-      backgroundColor: GLASS_GREEN,
+      // backgroundColor: GLASS_GREEN,
     },
   },
   effect: {
     style: {
-      backgroundColor: GLASS_PURPLE,
+      // backgroundColor: GLASS_PURPLE,
     },
   },
   effectExtra: {
     style: {
-      backgroundColor: GLASS_RED,
+      // backgroundColor: GLASS_RED,
     },
   },
   tweakExtra: {
     style: {
-      backgroundColor: GLASS_BLUE,
+      // backgroundColor: GLASS_BLUE,
     },
   },
 };

@@ -50,7 +50,7 @@ export const useAdsr = ({
   // RELEASE
   const adsr =
     attack + decay + sustain + release;
-  const end = t + adsr;
+  const end = (t + adsr);
   g.gain.setTargetAtTime(0, end, 0.01);
   o.stop(t + adsr + STOP_BUFFER);
   //~

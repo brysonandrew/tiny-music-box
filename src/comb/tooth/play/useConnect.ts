@@ -13,10 +13,7 @@ export const useConnect = () => {
   } = useContext();
   const { currentTime: t } = context;
   const { midi, d } = useToothContext();
-  const o = new OscillatorNode(
-    context,
-    { type: "triangle" }
-  );
+  const o = context.createOscillator();
   const frequency = midiToFreq(midi);
   o.frequency.setValueAtTime(
     frequency,
