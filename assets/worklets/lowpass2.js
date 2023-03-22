@@ -1,26 +1,53 @@
-export class Lowpass2Processor extends AudioWorkletProcessor {
+export class Lowpass2 extends AudioWorkletProcessor {
   static get parameterDescriptors() {
-    return [{ name: "frequency", defaultValue: 100, minValue: 0 }];
+    return [
+      {
+        name: "frequency",
+        defaultValue: 100,
+        minValue: 0,
+      },
+    ];
   }
   constructor(options) {
     super();
     this.lastOut = 0;
     this.lastIn = 0;
-    this.type = options.processorOptions.type;
+    this.type = "lowpass";
+      //options.processorOptions.type;
   }
   process(inputs, outputs, parameters) {
     let omega_0 =
-      (2 * Math.PI * parameters.frequency[0]) / sampleRate;
+      (2 *
+        Math.PI *
+        parameters.frequency[0]) /
+      sampleRate;
     let a, b;
     if (this.type == "lowpass") {
-      (a = [Math.tan(omega_0 / 2) + 1, Math.tan(omega_0 / 2) - 1]),
-        (b = [Math.tan(omega_0 / 2), Math.tan(omega_0 / 2)]);
+      (a = [
+        Math.tan(omega_0 / 2) + 1,
+        Math.tan(omega_0 / 2) - 1,
+      ]),
+        (b = [
+          Math.tan(omega_0 / 2),
+          Math.tan(omega_0 / 2),
+        ]);
     } else {
-      (a = [Math.tan(omega_0 / 2) + 1, Math.tan(omega_0 / 2) - 1]),
+      (a = [
+        Math.tan(omega_0 / 2) + 1,
+        Math.tan(omega_0 / 2) - 1,
+      ]),
         (b = [1, -1]);
     }
-    for (let i = 0; i < inputs[0].length; ++i) {
-      for (let j = 0; j < inputs[0][i].length; ++j) {
+    for (
+      let i = 0;
+      i < inputs[0].length;
+      ++i
+    ) {
+      for (
+        let j = 0;
+        j < inputs[0][i].length;
+        ++j
+      ) {
         outputs[0][i][j] =
           (b[0] * inputs[0][i][j] +
             b[1] * this.lastIn -
@@ -34,4 +61,4 @@ export class Lowpass2Processor extends AudioWorkletProcessor {
   }
 }
 
-registerProcessor("lowpass2", Lowpass2Processor);
+registerProcessor("lowpass2", Lowpass2);

@@ -5,7 +5,7 @@ import { SwissArmyKnife } from "../../icons/SwissArmyKnife";
 export const MENU_KEYS = [
   "adsr",
   "tweak",
-  "style",
+  // "style",
 ] as const;
 export type TMenuKey =
   typeof MENU_KEYS[number];
@@ -16,5 +16,5 @@ export const ICON: Record<
 > = {
   adsr: <Clockwork />,
   tweak: <SwissArmyKnife />,
-  style: <Palette />,
+  // style: <Palette />,
 };

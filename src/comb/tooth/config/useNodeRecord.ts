@@ -9,7 +9,6 @@ import type {
   TEffectRecord,
 } from "../play/tweak/ui/effects/type";
 import { EFFECTS } from "../play/tweak/ui/effects/type";
-import { WORKLETS } from "./type";
 
 export const useNodeRecord = (
   midi: number

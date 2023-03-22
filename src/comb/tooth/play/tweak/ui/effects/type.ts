@@ -1,6 +1,7 @@
 export const EFFECTS = [
   "moog",
   "lowpass",
+  "lowpass2",
   "bitcrusher",
 ] as const;
 export type TEffectKey =

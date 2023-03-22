@@ -1,16 +1,20 @@
 import { Tooth } from "./tooth";
 import {
-  FROM_KEY,
   MIDI_KEYS,
   NOOP,
 } from "../config";
 import { useKey } from "../handlers";
 import { useContext } from "../state/Context";
 import { Ambient } from "./ambient";
+import { useRef } from "react";
 
 export const Comb = () => {
-  const { dispatch } = useContext();
-
+  const { dispatch, fromKey } =
+    useContext();
+  const settings = { fromKey };
+  const settingsRef = useRef(settings);
+  settingsRef.current = settings;
+  
   const handleKey = ({
     key,
     repeat,
@@ -21,7 +25,12 @@ export const Comb = () => {
       typeof numberKey === "number" &&
       !isNaN(numberKey)
     ) {
-      const midi = numberKey + FROM_KEY;
+      const midi =
+        numberKey +
+        settingsRef.current.fromKey;
+      console.log(
+        settingsRef.current.fromKey
+      );
       console.log(`NEXT MIDI:
       ${midi}`);
 
@@ -39,7 +48,7 @@ export const Comb = () => {
     },
     isActive: true,
   });
-  
+
   return (
     <>
       <Ambient />

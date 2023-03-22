@@ -28,6 +28,7 @@ export const Label: FC = () => {
     <motion.mesh
       position={[0, textY, 0]}
     >
+      <mesh></mesh>
       <Text
         characters="0123456789"
         fontSize={0.12}

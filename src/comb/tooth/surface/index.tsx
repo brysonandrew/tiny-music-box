@@ -10,11 +10,12 @@ export const Surface: FC = () => {
   const handleTap = () => {
     console.log("play");
   };
-  const { midis } = useContext();
+  const { midis, fromKey } =
+    useContext();
   const { midi } = useToothContext();
-  const isActive = midis[midi];
+  const isPlaying = midis[midi];
 
-  const x = resolveX(midi);
+  const x = resolveX(midi, fromKey);
 
   const positionKey: [
     x: number,
@@ -22,19 +23,31 @@ export const Surface: FC = () => {
     z: number
   ] = [x, 0, 0];
 
+  const isInRange =
+    midi >= fromKey &&
+    midi <= fromKey + 12;
+
   return (
     <motion.mesh
       position={positionKey}
       initial={false}
       animate={
-        isActive ? "active" : "animate"
+        isPlaying
+          ? "playing"
+          : isInRange
+          ? "active"
+          : "animate"
       }
-      whileTap="tap"
-      onTap={handleTap}
+      // whileTap="tap"
+      // onTap={handleTap}
       variants={{
-        animate: { y: 0 },
-        active: { y: 0.05 },
-        tap: { y: 0.1 },
+        animate: { y: 0, opacity: 0.5 },
+        playing: {
+          y: 0.15,
+          opacity: 1,
+        },
+        active: { y: 0.05, opacity: 1 },
+        // tap: { y: 0.1, opacity: 1 },
       }}
     >
       <Label />

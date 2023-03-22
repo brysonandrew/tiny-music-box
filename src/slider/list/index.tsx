@@ -7,11 +7,7 @@ import {
   rowCenter,
   rowGap,
 } from "../../styles/decorators";
-import {
-  textMdCss,
-  textSmCss,
-  textXsCss,
-} from "../../styles/text";
+import { textSmCss } from "../../styles/text";
 import type { TRequireAtLeastOne } from "../../types";
 import { Slider as SliderDark } from "..";
 import { HEADER_HEIGHT } from "../../styles/constants";

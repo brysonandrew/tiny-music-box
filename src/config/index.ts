@@ -38,7 +38,7 @@ export const DETUNE_NORMAL_RANGE = {
 };
 
 export const FROM_KEY = 20;
-export const TOTAL_KEYS = 12;
+export const TOTAL_KEYS = 80;
 
 export const MIDI_KEYS: number[] =
   resolveKeys({

@@ -1,7 +1,6 @@
 import type { FC } from "react";
 import { motion } from "framer-motion-3d";
 import {
-  STAGGER,
   WIDTH,
   HEIGHT,
   DEPTH,
@@ -11,7 +10,6 @@ import { useContext as useToothContext } from "../../../state/tooth/Context";
 import {
   resolveColor,
   resolveTapColor,
-  resolveX,
 } from "./config";
 
 export const Tooth: FC = () => {

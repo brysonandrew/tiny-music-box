@@ -1,3 +1,9 @@
+import {
+  resolveMidis,
+  FROM_KEY,
+  TOTAL_KEYS,
+  resolveInitMidis,
+} from "../config";
 import { INIT_STATE } from "./constants";
 import type {
   TState,
@@ -54,9 +60,11 @@ export const reducer = (
       return { ...state, ...value };
     }
     case "x": {
+      const from = ~~((value + 0.5) * 60);
       return {
         ...state,
         x: value,
+        fromKey: from,
       };
     }
     case "loading": {
@@ -138,6 +146,15 @@ export const reducer = (
         ...state,
         lowpass: {
           ...state.lowpass,
+          ...value,
+        },
+      };
+    }
+    case "lowpass2": {
+      return {
+        ...state,
+        lowpass2: {
+          ...state.lowpass2,
           ...value,
         },
       };

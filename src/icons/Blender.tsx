@@ -1,7 +1,7 @@
 export const Blender = () => (
   <svg
-    width="40px"
-    height="40px"
+    width="28px"
+    height="28px"
     viewBox="0 0 512 512"
     fill="currentColor"
   >

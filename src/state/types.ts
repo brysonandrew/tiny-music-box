@@ -15,6 +15,7 @@ import type { TLowpassConfig } from "./constants/lowpass";
 import type { TBitcrusherConfig } from "./constants/bitcrusher";
 import type { TBaseWaveKey } from "../comb/tooth/play/tweak/ui/wave/type";
 import type { TEffectKey } from "../comb/tooth/play/tweak/ui/effects/type";
+import type { TLowpass2Config } from "./constants/lowpass2";
 
 export type TContext = TState & {
   dispatch: TDispatch;
@@ -22,6 +23,7 @@ export type TContext = TState & {
 
 export type TState = {
   x: number;
+  fromKey: number;
   wave: TBaseWaveKey;
   effect: TEffectKey;
   context: AudioContext;
@@ -33,6 +35,7 @@ export type TState = {
   tweak: TTweakConfig;
   moog: TMoogConfig;
   lowpass: TLowpassConfig;
+  lowpass2: TLowpass2Config;
   bitcrusher: TBitcrusherConfig;
   style: TStyleConfig;
   loading: Partial<

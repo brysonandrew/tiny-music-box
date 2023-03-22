@@ -51,7 +51,7 @@ export const Controls = () => {
     <Root>
       <Header />
       <AnimatePresence mode="popLayout">
-        {menu && ( 
+        {menu && (
           <Side
             layout="position"
             style={{ y: 0 }}
@@ -64,7 +64,7 @@ export const Controls = () => {
           </Side>
         )}
       </AnimatePresence>
-      {/* <Handle /> */}
+      <Handle />
     </Root>
   );
 };

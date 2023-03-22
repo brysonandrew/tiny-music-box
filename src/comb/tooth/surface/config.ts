@@ -1,13 +1,11 @@
-import {
-  FROM_KEY,
-  TOTAL_KEYS,
-} from "../../../config";
+import { TOTAL_KEYS } from "../../../config";
 import { STAGGER } from "../init/size";
 
 export const resolveX = (
-  midi: number
+  midi: number,
+  fromKey: number
 ) =>
-  STAGGER * (midi - FROM_KEY) -
+  STAGGER * midi -
   TOTAL_KEYS * 0.5 * STAGGER;
 
 export const resolveColor = (
@@ -22,5 +20,4 @@ export const resolveColor = (
 
 export const resolveTapColor = (
   midi: number
-) =>
-  `hsl(${100 + midi},90%,90%)`;
+) => `hsl(${100 + midi},90%,90%)`;

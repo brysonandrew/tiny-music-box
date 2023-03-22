@@ -1,10 +1,9 @@
-import { FROM_KEY } from "../../config";
-
 export const useActiveMidisLog = (
-  midis: boolean[]
+  midis: boolean[],
+  fromKey: number
 ) => {
   const inRangeMidis =
-    midis.slice(FROM_KEY);
+    midis.slice(fromKey);
 
   console.log(
     `ACTIVE MIDIS:
@@ -14,7 +13,7 @@ export const useActiveMidisLog = (
         .length
     }
   ${inRangeMidis.map((v, i) =>
-    v ? i + FROM_KEY : "--"
+    v ? i + fromKey : "--"
   )}`.replace(new RegExp(",", "g"), "|")
   );
 };
